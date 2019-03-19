@@ -5,6 +5,7 @@ import { key } from '../utils/apiKEY';
 import { cleanMovieData } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies } from '../actions';
+import MovieContainer from './MovieContainer';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
         <header>
           <h1>Movie Tracker</h1>
         </header>
+        <MovieContainer />
       </div>
     );
   }
