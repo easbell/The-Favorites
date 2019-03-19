@@ -6,7 +6,7 @@ export const cleanMovieData = (movies) => {
         id: movie.id,
         releaseDate: movie.release_date,
         synopsis: movie.overview,
-        posterImage: movie.poster_path
+        posterImage: 'https://image.tmdb.org/t/p/w500'+movie.poster_path
     })
   })
 }

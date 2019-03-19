@@ -9,6 +9,7 @@ export class Movie extends Component {
         <p>{rating}</p>
         <p>{releaseDate}</p>
         <p>{synopsis}</p>
+        <img src={posterImage} alt='movie poster'/>
       </div>
     )
   }
