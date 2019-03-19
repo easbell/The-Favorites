@@ -3,6 +3,8 @@ import '../styles/App.css';
 import { fetchData } from '../utils/fetch'
 import { key } from '../utils/apiKEY';
 import { cleanMovieData } from '../utils/helpers';
+import { connect } from 'react-redux';
+import { addAllMovies } from '../actions';
 
 class App extends Component {
 
@@ -14,7 +16,7 @@ class App extends Component {
     const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`;
     const allMovies = await fetchData(url);
     const cleanData = cleanMovieData(allMovies);
-    console.log(cleanData);
+    this.props.addAllMovies(cleanData);
   }
 
   render() {
@@ -28,4 +30,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapDispatchToProps = (dispatch) => ({
+  addAllMovies: (movies) => dispatch(addAllMovies(movies))
+})
+
+export default connect(null, mapDispatchToProps)(App);
