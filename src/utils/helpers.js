@@ -5,7 +5,8 @@ export const cleanMovieData = (movies) => {
         rating: movie.vote_average,
         id: movie.id,
         releaseDate: movie.release_date,
-        synopsis: movie.overview
+        synopsis: movie.overview,
+        posterImage: movie.poster_path
     })
   })
 }
