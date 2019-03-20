@@ -25,6 +25,7 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>Movie Tracker</h1>
+          {/* <SignIn /> */}
         </header>
         <MovieContainer />
       </div>

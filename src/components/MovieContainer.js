@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 class MovieContainer extends Component{
   renderMovies = () => {
+    console.log(this.props.movies)
     return this.props.movies.map(movie => {
       return (
         <Movie 
