@@ -6,6 +6,7 @@ import { cleanMovieData } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies } from '../actions';
 import MovieContainer from './MovieContainer';
+import SignIn from './SignIn';
 
 class App extends Component {
 
@@ -25,7 +26,7 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>Movie Tracker</h1>
-          {/* <SignIn /> */}
+          <SignIn />
         </header>
         <MovieContainer />
       </div>
