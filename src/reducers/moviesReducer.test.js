@@ -19,13 +19,3 @@ describe('moviesReducer', () => {
     expect(result).toEqual(expected)
   })
 })
-
-
-// it('should return the state with a new todo', () => {
-//   const action = actions.addTodo('testing', 2)
-//   const initialState = []
-//   const expected = [{"completed": false, "id": 2, "text": "testing"}]
-  
-//   const result = todosReducer(initialState, action)
-//   expect(result).toEqual(expected)
-// });
