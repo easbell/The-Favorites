@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { fetchData } from '../utils/fetch';
 import { cleanUsers } from '../utils/helpers';
-import { Link } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { manageUser } from '../actions';
+import { logInUser } from '../actions';
 
 export class SignIn extends Component {
   constructor() {
@@ -47,7 +47,7 @@ export class SignIn extends Component {
     }
     const response = await fetchData(url, userOptionObject)
     if(response.status === 'success') {
-      this.props.manageUser(response.data)
+      this.props.logInUser(response.data)
     } 
     this.setState({ status: response.status })
   }
@@ -77,7 +77,7 @@ export class SignIn extends Component {
             onChange={this.handleChange}
           />
           {status === 'success' &&
-            <p>Welcome back!</p>
+            <Redirect to='/' />
           }
           {status === 500 &&
             <p>Sorry, we couldn't find your account, please sign up.</p>
@@ -91,7 +91,7 @@ export class SignIn extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  manageUser: (user) => dispatch(manageUser(user))
+  logInUser: (user) => dispatch(logInUser(user))
 })
 
 export default connect(null, mapDispatchToProps)(SignIn)
