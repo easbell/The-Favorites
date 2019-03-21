@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchData } from '../utils/fetch';
 import { cleanUsers } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
 export class SignIn extends Component {
   constructor() {
@@ -49,6 +50,7 @@ export class SignIn extends Component {
   render() {
     return (
       <div>
+        <Link to={'/'} className='back-btn'>Back To Home</Link>
         <form onSubmit={this.handleSignIn}>
         <input
             value={this.state.name}
