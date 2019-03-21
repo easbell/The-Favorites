@@ -6,6 +6,7 @@ import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies } from '../../actions';
 import MovieContainer from '../MovieContainer';
+import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp'
@@ -34,6 +35,15 @@ class App extends Component {
         <Route exact path='/' component={MovieContainer} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
+        <Route path='/movies/:id' render={({ match }) => {
+          const { id } = match.params
+          const selectedMovie = this.props.movies.find(movie => {
+            return movie.id == id
+          })
+          if(selectedMovie) {
+            return <MovieDetails {...selectedMovie} />
+          }
+        }} />
       </div>
     );
   }
@@ -43,4 +53,8 @@ export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

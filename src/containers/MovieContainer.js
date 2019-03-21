@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Movie from '../components/Movie';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class MovieContainer extends Component{
   renderMovies = () => {
     return this.props.movies.map(movie => {
       return (
-        <Movie 
-          key={movie.id}
-          {...movie}
-        />
+        <Link to={`/movies/${movie.id}`} key={movie.id} >
+          <Movie  
+            {...movie}
+          />
+        </Link>
       )
     })
   }
