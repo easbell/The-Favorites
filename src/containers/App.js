@@ -6,6 +6,7 @@ import { cleanMovieData } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies } from '../actions';
 import MovieContainer from './MovieContainer';
+import { NavLink, Route } from 'react-router-dom';
 import SignIn from './SignIn';
 
 class App extends Component {
@@ -25,10 +26,11 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+          <NavLink to='/login' className="nav">Log In</NavLink>
           <h1>Movie Tracker</h1>
-          <SignIn />
         </header>
-        <MovieContainer />
+        <Route exact path='/' component={MovieContainer} />
+        <Route exact path='/login' component={SignIn} />
       </div>
     );
   }
