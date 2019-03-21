@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
-import { fetchData } from '../utils/fetch'
-import { key } from '../utils/apiKEY';
-import { cleanMovieData } from '../utils/helpers';
+import './App.css';
+import { fetchData } from '../../utils/fetch'
+import { key } from '../../utils/apiKEY';
+import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies } from '../actions';
-import MovieContainer from './MovieContainer';
+import { addAllMovies } from '../../actions';
+import MovieContainer from '../MovieContainer';
 import { NavLink, Route } from 'react-router-dom';
-import SignIn from './SignIn';
-import SignUp from './SignUp'
+import SignIn from '../SignIn';
+import SignUp from '../SignUp'
 
 class App extends Component {
 

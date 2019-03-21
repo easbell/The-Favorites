@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchData } from '../utils/fetch';
 import { cleanUsers } from '../utils/helpers';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { manageUser } from '../actions';
 
@@ -37,7 +37,7 @@ export class SignIn extends Component {
     } 
     this.setState({ status: response.status })
   }
-
+  
   render() {
     const { status } = this.state;
     return (
@@ -57,7 +57,10 @@ export class SignIn extends Component {
             onChange={this.handleChange}
           />
           {status === 'success' &&
-            <p>Welcome back!</p>
+            <div>
+              <p>Welcome back!</p>
+              {/* setTimeout(() => (<Redirect to='/' />), 5000) */}
+            </div>
           }
           {status === 500 &&
             <p>Sorry, we couldn't find your account, please sign up.</p>
