@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { fetchData } from '../utils/fetch';
 import { cleanUsers } from '../utils/helpers';
-// import { verifyUser } from '../utils/verify';
 
 export class SignIn extends Component {
   constructor() {
@@ -21,7 +20,6 @@ export class SignIn extends Component {
   handleAddUser = async (e) => {
     e.preventDefault();
     console.log('in submit', this.state)
-    // const newUser = this.state;
     const url = 'http://localhost:3000/api/users/new#'
     const newUser = await fetchData(url, {
       method: 'POST',
@@ -31,8 +29,6 @@ export class SignIn extends Component {
       }
     })
     console.log(newUser)
-    // const verifyResponse = verifyUser(fetchedUsers.data, this.state)
-    // console.log(verifyResponse)
   }
 
   handleSignIn = async (e) => {
