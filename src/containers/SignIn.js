@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { fetchData } from '../utils/fetch';
 import { cleanUsers } from '../utils/helpers';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { manageUser } from '../actions';
 
 export class SignIn extends Component {
   constructor() {
@@ -44,7 +46,10 @@ export class SignIn extends Component {
       }
     }
     const response = await fetchData(url, userOptionObject)
-    console.log(response)
+    if(response.status === 'success') {
+      this.props.manageUser(response.data)
+    }
+    // const 
   }
 
   render() {
@@ -78,4 +83,8 @@ export class SignIn extends Component {
   }
 }
 
-export default SignIn
+export const mapDispatchToProps = (dispatch) => ({
+  manageUser: (user) => dispatch(manageUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(SignIn)
