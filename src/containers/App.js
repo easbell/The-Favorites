@@ -8,8 +8,15 @@ import { addAllMovies } from '../actions';
 import MovieContainer from './MovieContainer';
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from './SignIn';
+import SignOut from './SignOut';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: ''
+    }
+  }
 
   componentDidMount = () => {
     this.fetchMovies()
@@ -23,11 +30,19 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
           <h1>Movie Tracker</h1>
+          {
+          this.props.user &&
+            <div>
+              <p>Welcome back!</p>
+              <SignOut />
+            </div>
+          }
         </header>
         <Route exact path='/' component={MovieContainer} />
         <Route exact path='/login' component={SignIn} />
@@ -40,4 +55,8 @@ export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export const mapStateToProps = (state) => ({
+  user: state.user.name
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
