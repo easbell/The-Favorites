@@ -27,6 +27,7 @@ export class SignIn extends Component {
       }
     }
     const response = await fetchData(url, userOptionObject)
+    console.log(response)
   }
 
   render() {
