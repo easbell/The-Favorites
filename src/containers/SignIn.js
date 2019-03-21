@@ -35,10 +35,25 @@ export class SignIn extends Component {
     // console.log(verifyResponse)
   }
 
+  handleSignIn = async (e) => {
+    e.preventDefault();
+    const url = 'http://localhost:3000/api/users'
+    const userInput = this.state
+    const userOptionObject = {
+      method: "POST",
+      body: JSON.stringify(userInput),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    const response = await fetchData(url, userOptionObject)
+    console.log(response)
+  }
+
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSignIn}>
         <input
             value={this.state.name}
             name='name'
