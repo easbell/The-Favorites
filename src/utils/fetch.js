@@ -6,4 +6,4 @@ export const fetchData = async (url, options) => {
   } else {
     return 'error'
   }
-} 
+}

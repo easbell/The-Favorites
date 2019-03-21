@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Movie from './Movie';
+import Movie from '../components/Movie';
 import { connect } from 'react-redux';
 
 class MovieContainer extends Component{
