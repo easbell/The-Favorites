@@ -9,29 +9,15 @@ export class SignIn extends Component {
   constructor() {
     super()
     this.state = {
-      name: '',
       email: '',
       password: '',
-      status: ''
+      status: '',
     }
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
-  }
-
-  handleAddUser = async (e) => {
-    e.preventDefault();
-    console.log('in submit', this.state)
-    const url = 'http://localhost:3000/api/users/new#'
-    const newUser = await fetchData(url, {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
   }
 
   handleSignIn = async (e) => {
@@ -51,19 +37,13 @@ export class SignIn extends Component {
     } 
     this.setState({ status: response.status })
   }
-
+  
   render() {
     const { status } = this.state;
     return (
       <div>
         <Link to={'/'} className='back-btn'>Back To Home</Link>
         <form onSubmit={this.handleSignIn}>
-        <input
-            value={this.state.name}
-            name='name'
-            placeholder="your name"
-            onChange={this.handleChange}
-          />
           <input
             value={this.state.email}
             name='email'
@@ -83,7 +63,6 @@ export class SignIn extends Component {
             <p>Sorry, we couldn't find your account, please sign up.</p>
           }
           <button>Sign In</button>
-          <button onClick={this.handleAddUser}>Sign Up</button>
         </form>
       </div>
     )

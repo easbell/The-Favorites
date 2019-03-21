@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
-import { fetchData } from '../utils/fetch'
-import { key } from '../utils/apiKEY';
-import { cleanMovieData } from '../utils/helpers';
+import './App.css';
+import { fetchData } from '../../utils/fetch'
+import { key } from '../../utils/apiKEY';
+import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies } from '../actions';
-import MovieContainer from './MovieContainer';
+import { addAllMovies } from '../../actions';
+import MovieContainer from '../MovieContainer';
+import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
-import SignIn from './SignIn';
-import SignOut from './SignOut';
+import SignIn from '../SignIn';
+import SignUp from '../SignUp'
 
 class App extends Component {
   constructor() {
@@ -30,12 +31,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
-          <h1>Movie Tracker</h1>
+          <NavLink to='/signup' className="nav">Sign Up</NavLink>
           {
           this.props.user &&
             <div>
@@ -43,9 +43,20 @@ class App extends Component {
               <SignOut />
             </div>
           }
+          <h1>Movie Tracker</h1>
         </header>
         <Route exact path='/' component={MovieContainer} />
         <Route exact path='/login' component={SignIn} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route path='/movies/:id' render={({ match }) => {
+          const { id } = match.params
+          const selectedMovie = this.props.movies.find(movie => {
+            return movie.id == id
+          })
+          if(selectedMovie) {
+            return <MovieDetails {...selectedMovie} />
+          }
+        }} />
       </div>
     );
   }
@@ -55,7 +66,8 @@ export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies))
 })
 
-export const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
+  movies: state.movies,
   user: state.user.name
 })
 
