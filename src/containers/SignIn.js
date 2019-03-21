@@ -12,6 +12,7 @@ export class SignIn extends Component {
       name: '',
       email: '',
       password: '',
+      status: ''
     }
   }
 
@@ -31,7 +32,6 @@ export class SignIn extends Component {
         'Content-Type': 'application/json'
       }
     })
-    console.log(newUser)
   }
 
   handleSignIn = async (e) => {
@@ -48,11 +48,12 @@ export class SignIn extends Component {
     const response = await fetchData(url, userOptionObject)
     if(response.status === 'success') {
       this.props.manageUser(response.data)
-    }
-    // const 
+    } 
+    this.setState({ status: response.status })
   }
 
   render() {
+    const { status } = this.state;
     return (
       <div>
         <Link to={'/'} className='back-btn'>Back To Home</Link>
@@ -75,6 +76,12 @@ export class SignIn extends Component {
             placeholder="Password"
             onChange={this.handleChange}
           />
+          {status === 'success' &&
+            <p>Welcome back!</p>
+          }
+          {status === 500 &&
+            <p>Sorry, we couldn't find your account, please sign up.</p>
+          }
           <button>Sign In</button>
           <button onClick={this.handleAddUser}>Sign Up</button>
         </form>

@@ -4,6 +4,6 @@ export const fetchData = async (url, options) => {
     const parsedData = response.json()
     return parsedData;
   } else {
-    return 'error'
+    return response
   }
 }
