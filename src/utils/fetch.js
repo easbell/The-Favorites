@@ -1,9 +1,9 @@
-export const fetchData = async (url) => {
-  try {
-    const response = await fetch(url)
+export const fetchData = async (url, options) => {
+  const response = await fetch(url, options)
+  if(response.ok) {
     const parsedData = response.json()
     return parsedData;
-  } catch(error) {
-    return error.message
+  } else {
+    return 'error'
   }
-}
+} 

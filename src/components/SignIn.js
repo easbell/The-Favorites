@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {fetchData } from '../utils/fetch'
 
 export class SignIn extends Component {
   constructor() {
@@ -14,15 +15,25 @@ export class SignIn extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = (e) => {
+  handleSignIn = async (e) => {
     e.preventDefault();
-    console.log('in submit', this.state)
+    const url = 'http://localhost:3000/api/users'
+    const userInput = this.state
+    const userOptionObject = {
+      method: "POST",
+      body: JSON.stringify(userInput),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    const response = await fetchData(url, userOptionObject)
+    console.log(response)
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSignIn}>
           <input
             value={this.state.email}
             name='email'
