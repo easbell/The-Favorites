@@ -8,6 +8,7 @@ import { addAllMovies } from '../actions';
 import MovieContainer from './MovieContainer';
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from './SignIn';
+import SignUp from './SignUp'
 
 class App extends Component {
 
@@ -27,10 +28,12 @@ class App extends Component {
       <div className="App">
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
+          <NavLink to='/signup' className="nav">Sign Up</NavLink>
           <h1>Movie Tracker</h1>
         </header>
         <Route exact path='/' component={MovieContainer} />
         <Route exact path='/login' component={SignIn} />
+        <Route exact path='/signup' component={SignUp} />
       </div>
     );
   }
