@@ -14,15 +14,26 @@ describe('actions', () => {
       expect(result).toEqual(expected)
     })
   })
-  describe('manageUser', () => {
-    it('should return a type of MANAGE_USER with a user', () => {
+  describe('logInUser', () => {
+    it('should return a type of LOG_IN_USER with a user', () => {
       const expected = {
-        type: 'MANAGE_USER',
+        type: 'LOG_IN_USER',
         user: mockUser
       }
       const user = mockUser;
 
-      const result = actions.manageUser(user);
+      const result = actions.logInUser(user);
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('logOutUser', () => {
+    it('should return a type of LOG_OUT_USER with an empty object', () => {
+      const expected = {
+        type: 'LOG_OUT_USER'
+      }
+      const result = actions.logOutUser();
+
       expect(result).toEqual(expected)
     })
   })
