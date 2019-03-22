@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie should match snapshot 1`] = `
+<div>
+  <h4 />
+  <p />
+  <img
+    alt="movie poster"
+  />
+</div>
+`;
