@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails should match snapshot 1`] = `
+<div>
+  <Link
+    className="back-btn"
+    to="/"
+  >
+    Back To All Movies
+  </Link>
+  <img
+    alt="movie poster"
+  />
+</div>
+`;

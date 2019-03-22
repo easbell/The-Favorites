@@ -1,5 +1,5 @@
 import { userReducer } from './userReducer'
-import * as actions from '../actions'
+import * as actions from '../actions/index'
 import { mockUser } from '../utils/mockData';
 
 describe('userReducer', () => {
@@ -10,10 +10,19 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should return the state with a movies array', () => {
-    const action = actions.manageUser(mockUser);
+  it('should return the state with a user object', () => {
+    const action = actions.logInUser(mockUser);
     const initialState = {};
     const expected = mockUser;
+
+    const result = userReducer(initialState, action);
+    expect(result).toEqual(expected)
+  })
+
+  it('should return the state with an empty object', () => {
+    const action = actions.logOutUser();
+    const initialState = mockUser;
+    const expected = {};
 
     const result = userReducer(initialState, action);
     expect(result).toEqual(expected)
