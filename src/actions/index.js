@@ -16,3 +16,8 @@ export const addAllShows = (shows) => ({
   type: 'ADD_ALL_TVS',
   shows,
 })
+
+export const displayFavorites = (id) => ({
+  type: 'DISPLAY_FAVORITES',
+  id
+})

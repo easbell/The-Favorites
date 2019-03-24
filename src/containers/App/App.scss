@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'helv-neue';
-  src: url('./utils/neue-helv/HelveticaNeue-BlackExt.woff') format('woff2');
+  src: url('./utils/assets/neue-helv/HelveticaNeue-BlackExt.woff') format('woff2');
 }
 
 @font-face {
   font-family: 'nav';
-  src: url('./utils/neue-helv/HelveticaNeue-HeavyItalic.woff') format('woff2');
+  src: url('./utils/assets/neue-helv/HelveticaNeue-HeavyItalic.woff') format('woff2');
 }
 
 @font-face {
   font-family: 'bebas';
-  src: url('./utils/bebas-neue/BebasNeue.otf') format('woff2');
+  src: url('./utils/assets/bebas-neue/BebasNeue.otf') format('woff2');
 }
 
 * {
@@ -19,7 +19,7 @@
 }
 
 .App {
-  background: url('./utils/trexjpg');
+  background: url('./utils/assets/trexjpg');
   background-size: cover;
   text-align: center;
   height: 100%;
