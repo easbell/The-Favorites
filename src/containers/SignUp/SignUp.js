@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchData } from '../utils/fetch';
+import { fetchData } from '../../utils/fetch';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 

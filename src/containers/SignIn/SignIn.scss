@@ -1,0 +1,27 @@
+.login {
+  background: hsla(360, 0%, 100%, 0.95);
+  display: flex-box;
+  font-family: 'arial';
+  height: 500px;
+  margin: auto;
+  padding: 30px;
+  width: 50%;
+}
+
+.form {
+  background: hsla(0, 0%,10%, 1);
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 40%;
+  float: right;
+  right: 15px;
+}
+
+.input {
+  margin: auto;
+}
+
+h4 {
+  color: hsla(360, 0%, 100%, 1);
+}

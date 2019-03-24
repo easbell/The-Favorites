@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { fetchData } from '../utils/fetch';
-import { cleanUsers } from '../utils/helpers';
+import { fetchData } from '../../utils/fetch';
+import { cleanUsers, fetchAllFavorites } from '../../utils/helpers';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logInUser } from '../actions';
+import { logInUser, addAllFavorites } from '../../actions';
 
 export class SignIn extends Component {
   constructor() {
@@ -34,6 +34,8 @@ export class SignIn extends Component {
     const response = await fetchData(url, userOptionObject)
     if(response.status === 'success') {
       this.props.logInUser(response.data)
+      const userFavorites = await fetchAllFavorites(response.data.id)
+      this.props.addFavoritesToState(userFavorites)
     } 
     this.setState({ status: response.status })
   }
@@ -41,20 +43,24 @@ export class SignIn extends Component {
   render() {
     const { status } = this.state;
     return (
-      <div>
+      <div className="login">
         <Link to={'/'} className='back-btn'>Back To Home</Link>
-        <form onSubmit={this.handleSignIn}>
+        <form onSubmit={this.handleSignIn} className="form">
+          <h4>email:</h4>
           <input
             value={this.state.email}
             name='email'
             placeholder="Email"
             onChange={this.handleChange}
+            className="input"
           />
+          <h4>password</h4>
           <input
             value={this.state.password}
             name='password'
             placeholder="Password"
             onChange={this.handleChange}
+            className="input"
           />
           {status === 'success' &&
             <Redirect to='/' />
@@ -70,7 +76,8 @@ export class SignIn extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  logInUser: (user) => dispatch(logInUser(user))
+  logInUser: (user) => dispatch(logInUser(user)),
+  addFavoritesToState: (favorite) => dispatch(addAllFavorites(favorite))
 })
 
 export default connect(null, mapDispatchToProps)(SignIn)

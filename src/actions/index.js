@@ -17,7 +17,12 @@ export const addAllShows = (shows) => ({
   shows,
 })
 
-export const displayFavorites = (id) => ({
-  type: 'DISPLAY_FAVORITES',
+export const addFavorite = (id) => ({
+  type: 'ADD_FAVORITE',
   id
+})
+
+export const addAllFavorites = (favorites) => ({
+  type: 'ADD_ALL_FAVORITES',
+  favorites
 })

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchData } from '../utils/fetch';
-import { addFavorites } from '../actions';
+import { addFavorite } from '../actions';
 import { connect } from 'react-redux';
 
 export class Movie extends Component {
@@ -15,16 +15,13 @@ export class Movie extends Component {
     const { user_id, id } = this.props
     const url = `http://localhost:3000/api/users/${user_id}/favorites`      
     if(user_id) {
-      const allFavorites = await fetchData(url)
-      allFavorites.data.forEach(favorite => {
-        if(favorite.movie_id === id) {
-          console.log('alreay in favorites')
-        } else {
-          this.addFavorite()
-        }
-      })
+      if(this.props.favorites.includes(id)) {
+        console.log('favorite already exists')
+      } else {
+        this.addFavorite()
+      }
     } else {
-      this.setState()
+      console.log('log in')
     }
   }
 
@@ -41,13 +38,14 @@ export class Movie extends Component {
       overview: synopsis
     }
     try {
-      await fetchData(url, {
+      const addedFavorite = await fetchData(url, {
         method: "POST", 
         body: JSON.stringify(movie),
         headers: {
           "Content-Type": "application/json"
         }
       })
+      this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
     }
@@ -74,7 +72,12 @@ export class Movie extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  user_id: state.user.id
+  user_id: state.user.id,
+  favorites: state.favorites
 })
 
-export default connect(mapStateToProps)(Movie)
+export const mapDispatchToProps = (dispatch) => ({
+  addFavoriteToState: (favorite) => dispatch(addFavorite(favorite))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)
