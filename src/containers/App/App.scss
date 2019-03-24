@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'helv-neue';
+  src: url('./utils/neue-helv/HelveticaNeue-BlackExt.woff') format('woff2');
+}
+
+@font-face {
+  font-family: 'nav';
+  src: url('./utils/neue-helv/HelveticaNeue-HeavyItalic.woff') format('woff2');
+}
+
+@font-face {
+  font-family: 'bebas';
+  src: url('./utils/bebas-neue/BebasNeue.otf') format('woff2');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background: url('./utils/trexjpg');
+  background-size: cover;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+  z-index: -1;
+}
+
+header {
+  padding: 25px;
+}
+
+h1 {
+  color: hsla(0,0%,100%, 0.85);
+  font-family: 'bebas';
+  font-size: 6em;
+  letter-spacing: 10px;
+}
+
+.nav {
+  color: hsla(0,0%,100%, 0.85);
+  font-family: 'nav';
+  padding: 10px;
+}

@@ -5,7 +5,6 @@ import { logOutUser } from '../actions';
 export class SignOut extends Component {
 
    SignOut = () => {
-    console.log('youre signed out')
     this.props.logOutUser();
   }
 

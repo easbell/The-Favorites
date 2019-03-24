@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies } from '../../actions';
+import { addAllMovies, addAllShows } from '../../actions';
 import MovieContainer from '../MovieContainer';
+import ShowsContainer from '../ShowsContainer';
 import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn';
@@ -22,13 +23,30 @@ class App extends Component {
 
   componentDidMount = () => {
     this.fetchMovies()
+    this.fetchTv();
   }
+
   
   fetchMovies = async () => {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`;
-    const allMovies = await fetchData(url);
-    const cleanData = cleanMovieData(allMovies);
-    this.props.addAllMovies(cleanData);
+    let movies = [];
+    for(let i = 1; i <= 3; i++) {
+      let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${i}`;
+      let allMovies = await fetchData(url);
+      console.log(allMovies)
+      let cleanData = cleanMovieData(allMovies);
+      cleanData.forEach(movie => {
+        movies.push(movie)
+      })
+    }
+    this.props.addAllMovies(movies);
+  }
+
+  fetchTv = async () => {
+    const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
+    const allShows = await fetchData(url);
+    const cleanData = cleanMovieData(allShows);
+    console.log(cleanData)
+    this.props.addAllShows(cleanData);
   }
 
   render() {
@@ -37,6 +55,7 @@ class App extends Component {
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
           <NavLink to='/signup' className="nav">Sign Up</NavLink>
+          {/* <button onClick={this.fetchTv}>Show TV Shows</button> */}
           {
           this.props.user &&
             <div>
@@ -44,9 +63,12 @@ class App extends Component {
               <SignOut />
             </div>
           }
-          <h1>Movie Tracker</h1>
+          <h1>MOVIE TRACKER</h1>
         </header>
+        <h2 className="sub-header">Recommended Movies</h2>
         <Route exact path='/' component={MovieContainer} />
+        <h2 className="sub-header">Recommended TV Shows</h2>
+        <Route exact path='/' component={ShowsContainer} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route path='/movies/:id' render={({ match }) => {
@@ -64,10 +86,12 @@ class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addAllMovies: (movies) => dispatch(addAllMovies(movies))
+  addAllMovies: (movies) => dispatch(addAllMovies(movies)),
+  addAllShows: (shows) => dispatch(addAllShows(shows))
 })
 
 const mapStateToProps = (state) => ({
+  shows: state.shows,
   movies: state.movies,
   user: state.user.name
 })
