@@ -83,7 +83,7 @@ results: [
 }
 
 
-export const mockMovies = [
+export const mockDataResponse = [
   {id: 424783,
   posterImage: "https://image.tmdb.org/t/p/w500/fw02ONlDhrYjTSZV8XO6hhU3ds3.jpg",
   rating: 6.5,

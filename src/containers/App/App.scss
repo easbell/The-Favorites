@@ -19,7 +19,7 @@
 }
 
 .App {
-  background: url('./utils/assets/trexjpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('./utils/assets/trexjpg');
   background-size: cover;
   text-align: center;
   height: 100%;
