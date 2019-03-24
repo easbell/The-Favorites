@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export class Movie extends Component {
   render() {
@@ -16,6 +16,15 @@ export class Movie extends Component {
       </div>
     )
   }
+  
+const Movie = ({ title, rating, posterImage }) => {
+  return (
+    <div>
+      <h4>{title}</h4>
+      <p>{rating}</p>
+      <img src={posterImage} alt='movie poster'/>
+    </div>
+  )
 }
 
 export default Movie

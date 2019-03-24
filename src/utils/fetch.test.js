@@ -3,7 +3,6 @@ import { mockMovieResponse } from './mockData';
 
 describe('fetchData', () => {
   let mockData;
-  let fetch;
 
   beforeEach(() => {
     mockData = mockMovieResponse;

@@ -10,8 +10,8 @@ import ShowsContainer from '../ShowsContainer';
 import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn';
-import SignUp from '../SignUp';
-import SignOut from '../SignOut';
+import SignUp from '../SignUp'
+import SignOut from '../SignOut'
 
 class App extends Component {
   constructor() {
