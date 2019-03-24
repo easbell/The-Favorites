@@ -12,29 +12,17 @@ export class Movie extends Component {
     }
   }
 
-  // componentDidMount = () => {
-
-  // }
-
   validateFavorite = async () => {
     const { user_id, id } = this.props
     const url = `http://localhost:3000/api/users/${user_id}/favorites`      
     if(user_id) {
-      const allFavorites = await fetchData(url)
-      // if(!props.favorites.length) {
-      //   this.addFavorite()
-      // }
-      allFavorites.data.forEach(favorite => {
-        if(favorite.movie_id === id) {
-          console.log('already in favorites')
-        } else {
-          this.addFavorite()
-          // this.props.addFavorite(a)
-        }
-      })
+      if(this.props.favorites.includes(id)) {
+        console.log('favorite already exists')
+      } else {
+        this.addFavorite()
+      }
     } else {
       console.log('log in')
-      this.setState()
     }
   }
 
