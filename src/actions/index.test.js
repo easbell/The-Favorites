@@ -37,5 +37,16 @@ describe('actions', () => {
       expect(result).toEqual(expected)
     })
   })
+
+  describe('addAllShows', () => {
+    it('should return a type of ADD_ALL_TVS with all the tv shows', () => {
+      const expected = {
+        type: 'ADD_ALL_TVS'
+      }
+      const result = actions.addAllShows();
+
+      expect(result).toEqual(expected)
+    })
+  })
   
 })
