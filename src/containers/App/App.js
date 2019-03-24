@@ -65,9 +65,9 @@ class App extends Component {
           }
           <h1>MOVIE TRACKER</h1>
         </header>
-        <h2 class="sub-header">Recommended Movies</h2>
+        <h2 className="sub-header">Recommended Movies</h2>
         <Route exact path='/' component={MovieContainer} />
-        <h2 class="sub-header">Recommended TV Shows</h2>
+        <h2 className="sub-header">Recommended TV Shows</h2>
         <Route exact path='/' component={ShowsContainer} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />

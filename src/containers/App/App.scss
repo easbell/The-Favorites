@@ -22,12 +22,12 @@
   background: url('./utils/trexjpg');
   background-size: cover;
   text-align: center;
-  // overflow: auto;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   overflow: scroll;
+  z-index: -1;
 }
 
 header {
