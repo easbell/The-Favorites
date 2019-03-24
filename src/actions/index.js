@@ -11,3 +11,8 @@ export const logInUser = (user) => ({
 export const logOutUser = () => ({
   type: 'LOG_OUT_USER',
 })
+
+export const addAllTvs = (shows) => ({
+  type: 'ADD_ALL-TVS',
+  shows,
+})

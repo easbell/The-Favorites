@@ -4,7 +4,7 @@ import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies } from '../../actions';
+import { addAllMovies, addAllTvs } from '../../actions';
 import MovieContainer from '../MovieContainer';
 import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
@@ -25,12 +25,17 @@ class App extends Component {
   }
   
   fetchMovies = async () => {
-    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`;
-    // https://api.themoviedb.org/3/movie/550?api_key=8d7b6fe01228e8a63b959e9b25935a95
-    const allMovies = await fetchData(url);
-    const cleanData = cleanMovieData(allMovies);
-    console.log(cleanData)
-    this.props.addAllMovies(cleanData);
+    for(let i = 1; i <= 3; i++) {
+      // https://api.themoviedb.org/3/discover/movie?api_key={api-key}&primary_release_year={year}&page={page}
+      let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${i}`;
+      // https://api.themoviedb.org/3/movie/550?api_key=8d7b6fe01228e8a63b959e9b25935a95
+      let allMovies = await fetchData(url);
+      console.log(allMovies)
+      let cleanData = cleanMovieData(allMovies);
+      console.log(cleanData)
+      // return cleanData
+      this.props.addAllMovies(cleanData);
+    }
   }
 
   fetchTv = async () => {
@@ -38,7 +43,7 @@ class App extends Component {
     const allMovies = await fetchData(url);
     const cleanData = cleanMovieData(allMovies);
     console.log(cleanData)
-    this.props.addAllMovies(cleanData);
+    this.props.addAllTvs(cleanData);
   }
 
   render() {
@@ -47,7 +52,7 @@ class App extends Component {
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
           <NavLink to='/signup' className="nav">Sign Up</NavLink>
-          <button onClick={this.fetchTv}>More Movies</button>
+          <button onClick={this.fetchTv}>Show TV Shows</button>
           {
           this.props.user &&
             <div>
@@ -75,7 +80,8 @@ class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addAllMovies: (movies) => dispatch(addAllMovies(movies))
+  addAllMovies: (movies) => dispatch(addAllMovies(movies)),
+  addAllTvs: (shows) => dispatch(addAllTvs(shows))
 })
 
 const mapStateToProps = (state) => ({
