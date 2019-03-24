@@ -3,7 +3,7 @@ import Movie from '../components/Movie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class MovieContainer extends Component{
+class MovieContainer extends Component {
   renderMovies = () => {
     return this.props.movies.map(movie => {
       return (
@@ -11,6 +11,7 @@ class MovieContainer extends Component{
           <Movie  
             {...movie}
           />
+          <button onClick={this.validateFavorite()}>Favorite</button>
         </Link>
       )
     })
