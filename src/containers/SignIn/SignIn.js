@@ -41,20 +41,24 @@ export class SignIn extends Component {
   render() {
     const { status } = this.state;
     return (
-      <div>
+      <div className="login">
         <Link to={'/'} className='back-btn'>Back To Home</Link>
-        <form onSubmit={this.handleSignIn} className="login">
+        <form onSubmit={this.handleSignIn} className="form">
+          <h4>email:</h4>
           <input
             value={this.state.email}
             name='email'
             placeholder="Email"
             onChange={this.handleChange}
+            className="input"
           />
+          <h4>password</h4>
           <input
             value={this.state.password}
             name='password'
             placeholder="Password"
             onChange={this.handleChange}
+            className="input"
           />
           {status === 'success' &&
             <Redirect to='/' />
