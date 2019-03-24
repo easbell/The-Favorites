@@ -5,13 +5,14 @@ import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies, addAllShows } from '../../actions';
-import MovieContainer from '../MovieContainer';
-import ShowsContainer from '../ShowsContainer';
-import MovieDetails from '../../components/MovieDetails'
+import MovieContainer from '../MovieContainer/MovieContainer';
+import ShowsContainer from '../ShowsContainer/ShowsContainer';
+import MovieDetails from '../../components/MovieDetails';
+import Favorites from '../Favorites/favorites';
 import { NavLink, Route } from 'react-router-dom';
-import SignIn from '../SignIn';
-import SignUp from '../SignUp'
-import SignOut from '../SignOut'
+import SignIn from '../SignIn/SignIn';
+import SignUp from '../SignUp/SignUp';
+import SignOut from '../SignOut/SignOut';
 
 class App extends Component {
   constructor() {
@@ -55,6 +56,7 @@ class App extends Component {
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
           <NavLink to='/signup' className="nav">Sign Up</NavLink>
+          <NavLink to='/favorites' className="nav">Favorites</NavLink>
           {/* <button onClick={this.fetchTv}>Show TV Shows</button> */}
           {
           this.props.user &&
@@ -71,6 +73,7 @@ class App extends Component {
         <Route exact path='/' component={ShowsContainer} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/favorites' component={Favorites} />
         <Route path='/movies/:id' render={({ match }) => {
           const { id } = match.params
           const selectedMovie = this.props.movies.find(movie => {
