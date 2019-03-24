@@ -67,6 +67,7 @@ export class Movie extends Component {
         {/* <p classsName="rating">{rating}</p> */}
         <img src={image} alt='movie poster'/> 
         {/* <img src='../utils/assets/not-favorite.png' alt='favorite-icon'/> */}
+        <button onClick={this.validateFavorite}>Favorite</button>
       </div>
     )
   }

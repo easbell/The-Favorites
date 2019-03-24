@@ -11,7 +11,6 @@ class MovieContainer extends Component {
           <Movie  
             {...movie}
           />
-          <button onClick={this.validateFavorite()}>Favorite</button>
         </Link>
       )
     })
