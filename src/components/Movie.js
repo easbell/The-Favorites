@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { fetchData } from '../utils/fetch';
 import { addFavorite } from '../actions';
 import { connect } from 'react-redux';
-import { all } from 'q';
 
 export class Movie extends Component {
   constructor() {
@@ -27,7 +26,6 @@ export class Movie extends Component {
   }
 
   addFavorite = async (e) => {
-    console.log('add favorite')
     const { id, title, rating, user_id, posterImage, synopsis, releaseDate } = this.props
     const url = "http://localhost:3000/api/users/favorites/new"
     const movie = {
@@ -47,7 +45,6 @@ export class Movie extends Component {
           "Content-Type": "application/json"
         }
       })
-      console.log(addedFavorite);
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
