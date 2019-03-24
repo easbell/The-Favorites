@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'movie-title';
+  src: url('./utils/neue-helv/HelveticaNeue-LightCondObl.woff') format('woff2');
+}
+
+.movie {
+  width: 200px;
+  margin: 15px;
+  padding-top: 40px;
+  img {
+    width: 200px;
+  }
+}
+
+.movie-title {
+  color: 'black';;
+  font-size: 22px;
+  padding: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: 'white';
+}

@@ -9,7 +9,8 @@ import MovieContainer from '../MovieContainer';
 import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn';
-import SignUp from '../SignUp'
+import SignUp from '../SignUp';
+import SignOut from '../SignOut';
 
 class App extends Component {
   constructor() {
@@ -24,9 +25,19 @@ class App extends Component {
   }
   
   fetchMovies = async () => {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`;
+    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`;
+    // https://api.themoviedb.org/3/movie/550?api_key=8d7b6fe01228e8a63b959e9b25935a95
     const allMovies = await fetchData(url);
     const cleanData = cleanMovieData(allMovies);
+    console.log(cleanData)
+    this.props.addAllMovies(cleanData);
+  }
+
+  fetchTv = async () => {
+    const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
+    const allMovies = await fetchData(url);
+    const cleanData = cleanMovieData(allMovies);
+    console.log(cleanData)
     this.props.addAllMovies(cleanData);
   }
 
@@ -36,6 +47,7 @@ class App extends Component {
         <header>
           <NavLink to='/login' className="nav">Log In</NavLink>
           <NavLink to='/signup' className="nav">Sign Up</NavLink>
+          <button onClick={this.fetchTv}>More Movies</button>
           {
           this.props.user &&
             <div>
@@ -43,7 +55,7 @@ class App extends Component {
               <SignOut />
             </div>
           }
-          <h1>Movie Tracker</h1>
+          <h1>MOVIE TRACKER</h1>
         </header>
         <Route exact path='/' component={MovieContainer} />
         <Route exact path='/login' component={SignIn} />
