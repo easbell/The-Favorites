@@ -48,5 +48,18 @@ describe('actions', () => {
       expect(result).toEqual(expected)
     })
   })
+
+  describe('addFavorite', () => {
+    it('should return a type of ADD_FAVORITE with an id', () => {
+      const expected = {
+        type: 'ADD_FAVORITE'
+      }
+
+      const result = actions.addFavorite();
+
+      expect(result).toEqual(expected);
+    })
+  })
+
   
 })
