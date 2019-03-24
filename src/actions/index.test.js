@@ -1,15 +1,15 @@
 import * as actions from './index';
-import { mockMovies, mockUser } from '../utils/mockData';
+import { mockDataResponse, mockUser } from '../utils/mockData';
 
 describe('actions', () => {
   describe('addAllMovies', () => {
     it('should a return a type of ADD_ALL_MOVIES with all the movies', () => {
       const expected = {
         type: 'ADD_ALL_MOVIES',
-        movies: mockMovies
+        movies: mockDataResponse
       }
   
-      const result = actions.addAllMovies(mockMovies)
+      const result = actions.addAllMovies(mockDataResponse)
   
       expect(result).toEqual(expected)
     })
@@ -41,9 +41,10 @@ describe('actions', () => {
   describe('addAllShows', () => {
     it('should return a type of ADD_ALL_TVS with all the tv shows', () => {
       const expected = {
-        type: 'ADD_ALL_TVS'
+        type: 'ADD_ALL_TVS',
+        shows: mockDataResponse
       }
-      const result = actions.addAllShows();
+      const result = actions.addAllShows(mockDataResponse);
 
       expect(result).toEqual(expected)
     })
@@ -52,14 +53,26 @@ describe('actions', () => {
   describe('addFavorite', () => {
     it('should return a type of ADD_FAVORITE with an id', () => {
       const expected = {
-        type: 'ADD_FAVORITE'
+        type: 'ADD_FAVORITE',
+        id: 4
       }
 
-      const result = actions.addFavorite();
+      const result = actions.addFavorite(4);
 
       expect(result).toEqual(expected);
     })
   })
 
+  describe('addAllFavorites', () => {
+    it('should return a type of ADD_ALL_FAVORITES with all favorite movies/shows', () => {
+      const expected = {
+        type: 'ADD_ALL_FAVORITES',
+        favorites: [1, 3, 6, 2]
+      }
   
+      const result = actions.addAllFavorites([1, 3, 6, 2]);
+  
+      expect(result).toEqual(expected);
+    })
+  })
 })
