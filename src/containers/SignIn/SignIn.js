@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { fetchData } from '../utils/fetch';
-import { cleanUsers } from '../utils/helpers';
+import { fetchData } from '../../utils/fetch';
+import { cleanUsers } from '../../utils/helpers';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logInUser } from '../actions';
+import { logInUser } from '../../actions';
 
 export class SignIn extends Component {
   constructor() {
@@ -43,7 +43,7 @@ export class SignIn extends Component {
     return (
       <div>
         <Link to={'/'} className='back-btn'>Back To Home</Link>
-        <form onSubmit={this.handleSignIn}>
+        <form onSubmit={this.handleSignIn} className="login">
           <input
             value={this.state.email}
             name='email'

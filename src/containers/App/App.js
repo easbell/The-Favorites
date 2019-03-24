@@ -5,13 +5,13 @@ import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
 import { addAllMovies, addAllShows } from '../../actions';
-import MovieContainer from '../MovieContainer';
-import ShowsContainer from '../ShowsContainer';
+import MovieContainer from '../MovieContainer/MovieContainer';
+import ShowsContainer from '../ShowsContainer/ShowsContainer';
 import MovieDetails from '../../components/MovieDetails'
 import { NavLink, Route } from 'react-router-dom';
-import SignIn from '../SignIn';
-import SignUp from '../SignUp';
-import SignOut from '../SignOut';
+import SignIn from '../SignIn/SignIn';
+import SignUp from '../SignUp/SignUp';
+import SignOut from '../SignOut/SignOut';
 
 class App extends Component {
   constructor() {

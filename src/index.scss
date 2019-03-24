@@ -1,7 +1,8 @@
 @import './components/Movie';
-@import './containers/MovieContainer';
+@import './containers/MovieContainer/MovieContainer';
 @import './containers/App/App';
-@import './containers/ShowsContainer';
+@import './containers/ShowsContainer/ShowsContainer';
+@import './containers/SignIn/SignIn';
 
 html, body, #root {
   height: 100%;
