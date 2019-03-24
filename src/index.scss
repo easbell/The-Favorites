@@ -1,14 +1,22 @@
 @import './components/Movie';
 @import './containers/MovieContainer';
 @import './containers/App/App';
+@import './containers/ShowsContainer';
 
 html, body, #root {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: scroll;
 }
 
 body {
   background: hsla(0, 0%, 0%, 0.8);
+}
+
+.sub-header {
+  font-family: 'bebas';
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: 3em;
 }
