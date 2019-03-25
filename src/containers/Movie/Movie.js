@@ -55,6 +55,19 @@ export class Movie extends Component {
     this.props.deleteFavorite(id)
   }
 
+  removeFavorite = async () => {
+    const { id, user_id } = this.props
+    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`;
+    const userOptionObject = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    await fetchData(url, userOptionObject);
+    this.props.deleteFavorite(id)
+  }
+
   addFavorite = async (e) => {
     const { id, title, rating, user_id, posterImage, synopsis, releaseDate } = this.props
     const url = "http://localhost:3000/api/users/favorites/new"
