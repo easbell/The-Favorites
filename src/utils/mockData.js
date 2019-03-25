@@ -90,6 +90,7 @@ export const mockFavorite = [
   synopsis: "On the run in the year 1987, Bumblebee finds refuge in a junkyard in a small Californian beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers Bumblebee, battle-scarred and broken.  When Charlie revives him, she quickly learns this is no ordinary yellow VW bug.",
   title: "Bumblebee"}
 ]
+
 export const mockDataResponse = [
   {id: 424783,
   posterImage: "https://image.tmdb.org/t/p/w500/fw02ONlDhrYjTSZV8XO6hhU3ds3.jpg",
