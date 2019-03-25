@@ -16,12 +16,20 @@ export class Movie extends Component {
     if(user_id) {
       if(this.props.favorites.includes(id)) {
         console.log('favorite already exists')
+        this.removeFavorite()
       } else {
         this.addFavorite()
       }
     } else {
       console.log('log in')
     }
+  }
+
+  removeFavorite = async () => {
+    const { id, user_id } = this.props
+    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`
+    const data = await fetchData(url)
+    console.log(data)
   }
 
   addFavorite = async (e) => {
