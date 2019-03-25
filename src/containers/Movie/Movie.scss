@@ -54,6 +54,24 @@
   // }
 }
 
+.fav-false {
+  height: 65px;
+  width: 65px;
+  position: absolute;
+  top: 24px;
+  left: -19px;
+  background: url('./utils/assets/false.png')
+}
+
+.fav-true {
+  height: 65px;
+  width: 65px;
+  position: absolute;
+  top: 24px;
+  left: -19px;
+  background: url('./utils/assets/true.png')
+}
+
 .movie-title {
   color: 'black';;
   font-size: 22px;

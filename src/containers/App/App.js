@@ -18,7 +18,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: ''
+      user: '',
+      message: ''
     }
   }
 
@@ -26,7 +27,6 @@ class App extends Component {
     this.fetchMovies()
     this.fetchTv();
   }
-
   
   fetchMovies = async () => {
     let movies = [];
@@ -46,11 +46,11 @@ class App extends Component {
     const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
     const allShows = await fetchData(url);
     const cleanData = cleanMovieData(allShows);
-    console.log(cleanData)
     this.props.addAllShows(cleanData);
   }
 
   render() {
+    const {message} = this.props
     return (
       <div className="App">
         <header>
@@ -67,9 +67,10 @@ class App extends Component {
           }
           <h1>MOVIE TRACKER</h1>
         </header>
-        <h2 className="sub-header">Recommended Movies</h2>
+        <p className='message'>{message}</p>
+        <Route exact path="/" render={() => <h2 className="sub-header">Recommended Movies</h2>}/>
         <Route exact path='/' component={MovieContainer} />
-        <h2 className="sub-header">Recommended TV Shows</h2>
+        <Route exact path="/" render={() => <h2 className="sub-header">Recommended TV Shows</h2>}/>
         <Route exact path='/' component={ShowsContainer} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
@@ -83,10 +84,20 @@ class App extends Component {
             return <MovieDetails {...selectedMovie} />
           }
         }} />
+        <Route path='/shows/:id' render={({ match }) => {
+          const { id } = match.params
+          const selectedMovie = this.props.shows.find(movie => {
+            return movie.id == id
+          })
+          if(selectedMovie) {
+            return <MovieDetails {...selectedMovie} />
+          }
+        }} />
       </div>
-    );
+    )
   }
 }
+
 
 export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies)),
@@ -96,7 +107,8 @@ export const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   shows: state.shows,
   movies: state.movies,
-  user: state.user.name
+  user: state.user.name,
+  message: state.message
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

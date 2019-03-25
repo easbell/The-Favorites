@@ -1,28 +1,58 @@
 import React, {Component} from 'react';
 import { fetchData } from '../../utils/fetch';
-import { addFavorite, deleteFavorite } from '../../actions';
+import { addFavorite, deleteFavorite, addMessage } from '../../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+       
 
 export class Movie extends Component {
   constructor() {
     super()
     this.state = {
+      favorite: false,
       message: ''
     }
   }
 
+  componentDidMount = () => {
+    const {favorites, id} = this.props
+    favorites.forEach(favorite => {
+      if(favorite === id) {
+        this.setState({favorite: true})
+      }
+    })
+  }
+
   validateFavorite = () => {
-    const { user_id, id } = this.props  
+    const { user_id, id, addMessage } = this.props  
     if(user_id) {
       if(this.props.favorites.includes(id)) {
-        console.log('favorite already exists')
         this.removeFavorite()
+        this.setState({favorite: false})
       } else {
         this.addFavorite()
+        this.setState({favorite: true})
       }
     } else {
       console.log('log in')
+      addMessage('Please log in to add to favorites.')
+      setTimeout(() => {
+        addMessage('')
+      }, 3000)
     }
+  }
+
+  removeFavorite = async () => {
+    const { id, user_id } = this.props
+    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`;
+    const userOptionObject = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    await fetchData(url, userOptionObject);
+    this.props.deleteFavorite(id)
   }
 
   removeFavorite = async () => {
@@ -58,6 +88,7 @@ export class Movie extends Component {
           "Content-Type": "application/json"
         }
       })
+      console.log(addedFavorite)
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
@@ -65,7 +96,8 @@ export class Movie extends Component {
   }
 
   render() {
-    const { title, rating, posterImage, synopsis } = this.props
+    const {favorite} = this.state
+    const { id, title, rating, posterImage, synopsis, type } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div className="movie">
@@ -76,9 +108,10 @@ export class Movie extends Component {
         </div>
         {/* <h4 className="movie-title">{title}</h4> */}
         {/* <p classsName="rating">{rating}</p> */}
-        <img src={image} alt='movie poster'/> 
-        {/* <img src='../utils/assets/not-favorite.png' alt='favorite-icon'/> */}
-        <button className='favorite' onClick={this.validateFavorite}>Favorite</button>
+        <Link to={`/${type}/${id}`}>
+          <img src={image} alt='movie poster'/> 
+        </Link>
+        <div onClick={this.validateFavorite} className={favorite ? 'fav-true': 'fav-false'}></div>
       </div>
     )
   }
@@ -91,7 +124,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addFavoriteToState: (favorite) => dispatch(addFavorite(favorite)),
-  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite))
+  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite)),
+  addMessage: (message) => dispatch(addMessage(message))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
