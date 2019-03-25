@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 class ShowsContainer extends Component{
   renderShows = () => {
     return this.props.shows.map(show => {
-      console.log(show)
       return (
         <Movie type='shows' 
           {...show}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchData } from '../../utils/fetch';
-import { addFavorite, deleteFavorite } from '../../actions';
+import { addFavorite, deleteFavorite, addMessage } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
        
@@ -24,10 +24,9 @@ export class Movie extends Component {
   }
 
   validateFavorite = () => {
-    const { user_id, id } = this.props  
+    const { user_id, id, addMessage } = this.props  
     if(user_id) {
       if(this.props.favorites.includes(id)) {
-        console.log('favorite already exists')
         this.removeFavorite()
         this.setState({favorite: false})
       } else {
@@ -36,6 +35,10 @@ export class Movie extends Component {
       }
     } else {
       console.log('log in')
+      addMessage('Please log in to add to favorites.')
+      setTimeout(() => {
+        addMessage('')
+      }, 3000)
     }
   }
 
@@ -81,7 +84,6 @@ export class Movie extends Component {
 
   render() {
     const {favorite} = this.state
-    console.log(favorite)
     const { id, title, rating, posterImage, synopsis, type } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
@@ -109,7 +111,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addFavoriteToState: (favorite) => dispatch(addFavorite(favorite)),
-  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite))
+  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite)),
+  addMessage: (message) => dispatch(addMessage(message))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
