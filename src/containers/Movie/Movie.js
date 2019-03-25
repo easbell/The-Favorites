@@ -2,21 +2,33 @@ import React, {Component} from 'react';
 import { fetchData } from '../../utils/fetch';
 import { addFavorite } from '../../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+       
 
 export class Movie extends Component {
   constructor() {
     super()
     this.state = {
+      favorite: false,
       message: ''
     }
+  }
+
+  componentDidMount = () => {
+    const {favorites, id} = this.props
+    favorites.forEach(favorite => {
+      if(favorite === id) {
+        this.setState({favorite: true})
+      }
+    })
   }
 
   validateFavorite = () => {
     const { user_id, id } = this.props  
     if(user_id) {
       if(this.props.favorites.includes(id)) {
-        console.log('favorite already exists')
         this.removeFavorite()
+        this.setState({favorite: false})
       } else {
         this.addFavorite()
       }
@@ -52,6 +64,7 @@ export class Movie extends Component {
           "Content-Type": "application/json"
         }
       })
+      console.log(addedFavorite)
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
@@ -59,7 +72,8 @@ export class Movie extends Component {
   }
 
   render() {
-    const { title, rating, posterImage, synopsis } = this.props
+    const {favorite} = this.state
+    const { id, title, rating, posterImage, synopsis } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div className="movie">
@@ -70,9 +84,10 @@ export class Movie extends Component {
         </div>
         {/* <h4 className="movie-title">{title}</h4> */}
         {/* <p classsName="rating">{rating}</p> */}
-        <img src={image} alt='movie poster'/> 
-        {/* <img src='../utils/assets/not-favorite.png' alt='favorite-icon'/> */}
-        <button className='favorite' onClick={this.validateFavorite}>Favorite</button>
+        <Link to={`/movies/${id}`} >
+          <img src={image} alt='movie poster'/> 
+        </Link>
+        <div onClick={this.validateFavorite} className={favorite ? 'fav-true': 'fav-false'}></div>
       </div>
     )
   }
