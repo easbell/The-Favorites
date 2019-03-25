@@ -4,6 +4,10 @@ export const favoriteReducer = (state = [], action) => {
       return [...state, action.id]
     case 'ADD_ALL_FAVORITES':
       return action.favorites
+    case 'DELETE_FAVORITE':
+      return state.filter(movie => {
+        return movie.id !== action.id
+      })
   default:
     return state;
   }

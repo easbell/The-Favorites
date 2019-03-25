@@ -26,3 +26,8 @@ export const addAllFavorites = (favorites) => ({
   type: 'ADD_ALL_FAVORITES',
   favorites
 })
+
+export const deleteFavorite = (id) => ({
+  type: 'DELETE_FAVORITE',
+  id
+})
