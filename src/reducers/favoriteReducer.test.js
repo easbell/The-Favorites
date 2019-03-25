@@ -4,7 +4,7 @@ import * as actions from '../actions/index';
 describe('favoriteReducer', () => {
   it('should return the intial state', () => {
     const expected = [];
-    const result = favoriteReducer(undefined, [])
+    const result = favoriteReducer(undefined, {})
 
     expect(result).toEqual(expected)
   })
