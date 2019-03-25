@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchData } from '../../utils/fetch';
-import { addFavorite } from '../../actions';
+import { addFavorite, deleteFavorite } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Movie extends Component {
@@ -35,6 +35,7 @@ export class Movie extends Component {
       }
     }
     await fetchData(url, userOptionObject);
+    this.props.deleteFavorite(id)
   }
 
   addFavorite = async (e) => {
@@ -89,7 +90,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addFavoriteToState: (favorite) => dispatch(addFavorite(favorite))
+  addFavoriteToState: (favorite) => dispatch(addFavorite(favorite)),
+  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
