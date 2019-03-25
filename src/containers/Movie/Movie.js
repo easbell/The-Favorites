@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchData } from '../../utils/fetch';
-import { addFavorite } from '../../actions';
+import { addFavorite, deleteFavorite } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
        
@@ -27,10 +27,12 @@ export class Movie extends Component {
     const { user_id, id } = this.props  
     if(user_id) {
       if(this.props.favorites.includes(id)) {
+        console.log('favorite already exists')
         this.removeFavorite()
         this.setState({favorite: false})
       } else {
         this.addFavorite()
+        this.setState({favorite: true})
       }
     } else {
       console.log('log in')
@@ -39,9 +41,15 @@ export class Movie extends Component {
 
   removeFavorite = async () => {
     const { id, user_id } = this.props
-    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`
-    const data = await fetchData(url)
-    console.log(data)
+    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`;
+    const userOptionObject = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    await fetchData(url, userOptionObject);
+    this.props.deleteFavorite(id)
   }
 
   addFavorite = async (e) => {
@@ -73,6 +81,7 @@ export class Movie extends Component {
 
   render() {
     const {favorite} = this.state
+    console.log(favorite)
     const { id, title, rating, posterImage, synopsis } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
@@ -99,7 +108,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addFavoriteToState: (favorite) => dispatch(addFavorite(favorite))
+  addFavoriteToState: (favorite) => dispatch(addFavorite(favorite)),
+  deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
