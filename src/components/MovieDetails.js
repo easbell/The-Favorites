@@ -6,6 +6,7 @@ class MovieDetails extends Component {
 
   render() {
     const { title, rating, posterImage, synopsis, releaseDate } = this.props
+    console.log(this.props)
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div>

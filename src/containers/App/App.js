@@ -83,6 +83,15 @@ class App extends Component {
             return <MovieDetails {...selectedMovie} />
           }
         }} />
+        <Route path='/shows/:id' render={({ match }) => {
+          const { id } = match.params
+          const selectedMovie = this.props.shows.find(movie => {
+            return movie.id == id
+          })
+          if(selectedMovie) {
+            return <MovieDetails {...selectedMovie} />
+          }
+        }} />
       </div>
     );
   }

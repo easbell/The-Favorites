@@ -6,12 +6,11 @@ import { Link } from 'react-router-dom';
 class ShowsContainer extends Component{
   renderShows = () => {
     return this.props.shows.map(show => {
+      console.log(show)
       return (
-        <Link to={`/shows/${show.id}`} key={show.id} >
-          <Movie  
-            {...show}
-          />
-        </Link>
+        <Movie type='shows' 
+          {...show}
+        />
       )
     })
   }

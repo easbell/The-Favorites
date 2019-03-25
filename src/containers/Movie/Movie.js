@@ -82,7 +82,7 @@ export class Movie extends Component {
   render() {
     const {favorite} = this.state
     console.log(favorite)
-    const { id, title, rating, posterImage, synopsis } = this.props
+    const { id, title, rating, posterImage, synopsis, type } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div className="movie">
@@ -93,7 +93,7 @@ export class Movie extends Component {
         </div>
         {/* <h4 className="movie-title">{title}</h4> */}
         {/* <p classsName="rating">{rating}</p> */}
-        <Link to={`/movies/${id}`} >
+        <Link to={`/${type}/${id}`}>
           <img src={image} alt='movie poster'/> 
         </Link>
         <div onClick={this.validateFavorite} className={favorite ? 'fav-true': 'fav-false'}></div>
