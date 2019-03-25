@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie should match snapshot 1`] = `
+exports[`favorites should match snapshot 1`] = `
 <ContextConsumer>
   <Component />
 </ContextConsumer>

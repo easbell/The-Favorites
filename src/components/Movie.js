@@ -11,9 +11,8 @@ export class Movie extends Component {
     }
   }
 
-  validateFavorite = async () => {
-    const { user_id, id } = this.props
-    const url = `http://localhost:3000/api/users/${user_id}/favorites`      
+  validateFavorite = () => {
+    const { user_id, id } = this.props  
     if(user_id) {
       if(this.props.favorites.includes(id)) {
         console.log('favorite already exists')
@@ -65,7 +64,7 @@ export class Movie extends Component {
         {/* <p classsName="rating">{rating}</p> */}
         <img src={image} alt='movie poster'/> 
         {/* <img src='../utils/assets/not-favorite.png' alt='favorite-icon'/> */}
-        <button onClick={this.validateFavorite}>Favorite</button>
+        <button className='favorite' onClick={this.validateFavorite}>Favorite</button>
       </div>
     )
   }

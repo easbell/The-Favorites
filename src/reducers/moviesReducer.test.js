@@ -1,6 +1,6 @@
 import { moviesReducer } from './moviesReducer';
 import * as actions from '../actions'
-import { mockMovies } from '../utils/mockData'
+import { mockDataResponse } from '../utils/mockData'
 
 describe('moviesReducer', () => {
   it('should return the initial state', () => {
@@ -11,9 +11,9 @@ describe('moviesReducer', () => {
   });
 
   it('should return the state with a movies array', () => {
-    const action = actions.addAllMovies(mockMovies)
+    const action = actions.addAllMovies(mockDataResponse)
     const initialState = []
-    const expected = mockMovies
+    const expected = mockDataResponse
 
     const result = moviesReducer(initialState, action)
     expect(result).toEqual(expected)
