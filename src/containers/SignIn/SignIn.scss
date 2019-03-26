@@ -15,7 +15,7 @@
   flex-direction: column;
   font-family: 'bebas';
   height: 80%;
-  width: 20%;
+  width: 400px;
   margin: auto;
   padding: 15px;
 }
@@ -44,6 +44,17 @@
   &:hover {
     background: hsla(360, 0%, 100%, 1);
     color: hsla(0, 0%,10%, 1);
+  }
+}
+
+.sign-out-btn {
+  background: none;
+  border: none;
+  color: hsla(360, 0%, 100%, 1);
+  font-family: 'nav';
+  font-size: 16px;
+  &:hover {
+    cursor: pointer;
   }
 }
 

@@ -19,7 +19,7 @@ export const Nav = (props) => {
       }
       { props.user &&
         <div>
-          <button onClick={signOut}>Log Out</button>
+          <button onClick={signOut} className="sign-out-btn">Log Out</button>
           <NavLink to='/favorites' className="nav">Favorites</NavLink>
         </div>
       }
