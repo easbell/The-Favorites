@@ -35,12 +35,15 @@ describe('favorites', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  describe('filterMovies', () => {
-    it('should call renderMovies', () => {
-      wrapper.instance().filterMovies = mockDataResponse
-
+  describe('renderMovies', () => {
+    it('should call filterMovies', () => {
+      wrapper = shallow(
+        <Favorites {...props}
+        />
+      )
+      wrapper.instance().filterMovies = jest.fn().mockImplementation(() =>(mockDataResponse))
+      
       wrapper.instance().renderMovies()
-
       expect(wrapper.instance().filterMovies).toHaveBeenCalled()
     })
   })
