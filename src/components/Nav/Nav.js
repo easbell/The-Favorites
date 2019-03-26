@@ -27,7 +27,7 @@ export const Nav = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user.name,
 })
 
