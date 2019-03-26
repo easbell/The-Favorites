@@ -66,7 +66,7 @@ class App extends Component {
               <NavLink to='/favorites' className="nav">Favorites</NavLink>
             </div>
           }
-          <h1>MOVIE TRACKER</h1>
+          <h1>THE FAVORITE</h1>
         </header>
         <p className='message'>{message}</p>
         <Route exact path="/" render={() => <h2 className="sub-header">Recommended Movies</h2>}/>

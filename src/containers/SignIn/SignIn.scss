@@ -1,25 +1,50 @@
-.login {
-  background: hsla(360, 0%, 100%, 0.95);
-  display: flex-box;
-  font-family: 'arial';
-  height: 500px;
+.back-btn {
+  color: hsla(0, 0%,10%, 1);
+  font-size: 32px;
   margin: auto;
-  padding: 30px;
-  width: 50%;
+  margin-bottom: 25px;
+  width: 150px;
+  &:hover {
+    color: hsla(360, 0%, 90%, 1);
+  }
 }
 
 .form {
-  background: hsla(0, 0%,10%, 1);
+  background: hsla(0, 0%, 35%, .9);
   display: flex;
   flex-direction: column;
+  font-family: 'bebas';
   height: 80%;
-  width: 40%;
-  float: right;
-  right: 15px;
+  width: 20%;
+  margin: auto;
+  padding: 15px;
 }
 
 .input {
+  font-size: 16px;
   margin: auto;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  padding: 10px;
+  height: 30px;
+  width: 80%;
+}
+
+.sign-in-btn {
+  background: hsla(0, 0%,10%, 1);
+  border: none;
+  border-radius: 5px;
+  color: hsla(360, 0%, 100%, 1);
+  font-family: 'bebas';
+  font-size: 32px;
+  height: 40px;
+  letter-spacing: .2em;
+  margin: auto;
+  width: 95%;
+  &:hover {
+    background: hsla(360, 0%, 100%, 1);
+    color: hsla(0, 0%,10%, 1);
+  }
 }
 
 h4 {

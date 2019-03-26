@@ -32,20 +32,22 @@ export class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div className="logout">
+        <form onSubmit={this.handleSignIn} className="form">
         <Link to={'/'} className='back-btn'>Back To Home</Link>
-        <form onSubmit={this.handleSignIn}>
         <input
             value={this.state.name}
             name='name'
-            placeholder="your name"
+            placeholder="Your Name"
             onChange={this.handleChange}
+            className="input"
           />
           <input
             value={this.state.email}
             name='email'
             placeholder="Email"
             onChange={this.handleChange}
+            className="input"
           />
           <input
             value={this.state.password}
@@ -53,8 +55,9 @@ export class SignUp extends Component {
             name='password'
             placeholder="Password"
             onChange={this.handleChange}
+            className="input"
           />
-          <button onClick={this.handleAddUser}>Sign Up</button>
+          <button onClick={this.handleAddUser} className="sign-up-btn">Sign Up</button>
         </form>
       </div>
     )
