@@ -3,6 +3,7 @@ import { fetchData } from '../../utils/fetch';
 import { addFavorite, deleteFavorite, addMessage } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 export class Movie extends Component {
   constructor() {
@@ -114,3 +115,11 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
+
+Movie.propTypes = {
+  user_id: propTypes.number,
+  favorites: propTypes.array.isRequired,
+  addFavoriteToState: propTypes.func.isRequired,
+  deleteFavorite: propTypes.func.isRequired,
+  addMessage: propTypes.func.isRequired
+}
