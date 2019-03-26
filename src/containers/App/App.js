@@ -3,7 +3,7 @@ import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies, addAllShows } from '../../actions';
+import { addAllMovies, addAllShows, logOutUser } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import ShowsContainer from '../ShowsContainer/ShowsContainer';
 import MovieDetails from '../../components/MovieDetails';
@@ -11,7 +11,6 @@ import Favorites from '../Favorites/favorites';
 import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-import SignOut from '../SignOut/SignOut';
 
 class App extends Component {
   componentDidMount = () => {
@@ -27,6 +26,10 @@ class App extends Component {
     : this.props.addAllMovies(cleanData)
   }
 
+  SignOut = () => {
+    this.props.logOutUser();
+  }
+
   render() {
     const {message, user } = this.props
     return (
@@ -38,20 +41,28 @@ class App extends Component {
             <NavLink to='/signup' className="nav">Sign Up</NavLink>
           </div>
         }
-          {
-            user &&
-            <div>
-              <SignOut />
-              <NavLink to='/favorites' className="nav">Favorites</NavLink>
-            </div>
-          }
-          <h1>MOVIE TRACKER</h1>
+        {
+          user &&
+          <div>
+            <button onClick={this.SignOut}>Log Out</button>
+            <NavLink to='/favorites' className="nav">Favorites</NavLink>
+          </div>
+        }
+        <h1>MOVIE TRACKER</h1>
         </header>
         <p className='message'>{message}</p>
-        <Route exact path="/" render={() => <h2 className="sub-header">Recommended Movies</h2>}/>
-        <Route exact path='/' component={MovieContainer} />
-        <Route exact path="/" render={() => <h2 className="sub-header">Recommended TV Shows</h2>}/>
-        <Route exact path='/' component={ShowsContainer} />
+        <Route exact path="/" render={() => (
+          <div>
+            <h2 className="sub-header">Recommended Movies</h2>
+            <MovieContainer />
+          </div>
+        )} />
+        <Route exact path="/" render={() => (
+          <div>
+            <h2 className="sub-header">Recommended TV Shows</h2>
+            <ShowsContainer />
+          </div>
+        )} />
         <Route exact path='/login' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/favorites' component={Favorites} />
@@ -81,7 +92,8 @@ class App extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies)),
-  addAllShows: (shows) => dispatch(addAllShows(shows))
+  addAllShows: (shows) => dispatch(addAllShows(shows)),
+  logOutUser: (user) => dispatch(logOutUser())
 })
 
 const mapStateToProps = (state) => ({
