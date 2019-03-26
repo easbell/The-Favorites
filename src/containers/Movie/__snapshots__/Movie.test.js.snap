@@ -4,11 +4,8 @@ exports[`Movie should match snapshot 1`] = `
 <div
   className="movie"
 >
-  <div
-    className="movie-info"
-  />
   <Link
-    to="/undefined/123"
+    to="/details/123"
   >
     <img
       alt="movie poster"
