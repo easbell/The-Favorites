@@ -21,26 +21,13 @@
 }
 
 .input {
-  font-size: 20px;
+  font-size: 16px;
   margin: auto;
   margin-bottom: 40px;
   border-radius: 5px;
   padding: 10px;
   height: 30px;
   width: 80%;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-label {
-  display: flex;
-  font-size: 32px;
-  letter-spacing: .2em;
-  margin-bottom: 50px;
-  width: 50%;
 }
 
 .sign-in-btn {

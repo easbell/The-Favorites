@@ -9,6 +9,7 @@
   padding-top: 40px;
   position: relative;
   img {
+    opacity: .75;
     width: 200px;
   }
   .movie-info {
@@ -24,7 +25,7 @@
   }
   &:hover {
     img {
-      opacity: .7;
+      opacity: 1;
     }
   }
 }
