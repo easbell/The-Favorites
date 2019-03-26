@@ -53,7 +53,6 @@ export class SignIn extends Component {
         <form onSubmit={this.handleSignIn} className="form">
         <Link to={'/'} className='back-btn'>Back To Home</Link>
           <div className="input-container">
-            {/* <h4 className="input-label">email:</h4> */}
             <input
               value={this.state.email}
               name='email'
@@ -63,7 +62,6 @@ export class SignIn extends Component {
             />
           </div>
           <div className="input-container">
-            {/* <h4 className="input-label">password:</h4> */}
             <input
               value={this.state.password}
               name='password'
@@ -78,7 +76,7 @@ export class SignIn extends Component {
           {status === 500 &&
             <p>Sorry, we couldn't find your account, please sign up.</p>
           }
-          <button class="sign-in-btn">Sign In</button>
+          <button className="sign-in-btn">Sign In</button>
         </form>
       </div>
     )

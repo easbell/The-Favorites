@@ -1,0 +1,16 @@
+.sign-up-btn {
+  background: hsla(0, 0%,10%, 1);
+  border: none;
+  border-radius: 5px;
+  color: hsla(360, 0%, 100%, 1);
+  font-family: 'bebas';
+  font-size: 32px;
+  height: 40px;
+  letter-spacing: .2em;
+  margin: auto;
+  width: 95%;
+  &:hover {
+    background: hsla(360, 0%, 100%, 1);
+    color: hsla(0, 0%,10%, 1);
+  }
+}
