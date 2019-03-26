@@ -9,7 +9,7 @@ import ShowsContainer from '../ShowsContainer/ShowsContainer';
 import MovieDetails from '../../components/MovieDetails';
 import Nav from '../../components/Nav/Nav'
 import Favorites from '../Favorites/favorites';
-import { NavLink, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 
