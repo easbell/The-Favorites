@@ -4,6 +4,7 @@ import { cleanUsers, fetchAllFavorites } from '../../utils/helpers';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logInUser, addAllFavorites, addMessage } from '../../actions';
+import propTypes from 'prop-types';
 
 export class SignIn extends Component {
   constructor() {
@@ -93,3 +94,9 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(SignIn)
+
+SignIn.propTypes = {
+  logInUser: propTypes.func.isRequired,
+  addFavoritesToState: propTypes.func.isRequired,
+  addMessage: propTypes.func.isRequired
+}
