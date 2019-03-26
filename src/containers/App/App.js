@@ -14,7 +14,7 @@ import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import propTypes from 'prop-types';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount = () => {
     this.fetchMovies()
     this.fetchTv();
@@ -76,7 +76,7 @@ export const mapDispatchToProps = (dispatch) => ({
   logOutUser: (user) => dispatch(logOutUser())
 })
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   shows: state.shows,
   movies: state.movies,
   user: state.user.name,
@@ -86,10 +86,10 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  shows: propTypes.array.isRequired,
-  movies: propTypes.array.isRequired,
+  shows: propTypes.array,
+  movies: propTypes.array,
   user: propTypes.string,
   message: propTypes.string,
-  addAllMovies: propTypes.func.isRequired,
-  addAllShows: propTypes.func.isRequired
+  addAllMovies: propTypes.func,
+  addAllShows: propTypes.func
 }
