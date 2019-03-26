@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import propTypes from 'prop-types';
 
 class MovieContainer extends Component {
