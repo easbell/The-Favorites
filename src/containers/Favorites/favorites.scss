@@ -1,0 +1,23 @@
+.favorites-container {
+  display: inline-flex;
+  margin: auto;
+}
+
+.back-btn-fave {
+  border-radius: 5px;
+  color: hsla(0, 0%, 10%, 1);
+  display: block;
+  font-size: 22px;
+  font-weight: bolder;
+  height: 50px;
+  margin: auto;
+  margin-top: 18px;
+  margin-bottom: 50px;
+  width: 200px;
+  background: hsla(0, 0%, 90%, 1);
+  &:hover {
+    background: hsla(0, 0%, 10%, 1);
+    border: none;
+    color: hsla(360, 0%, 100%, 1);
+  }
+}
