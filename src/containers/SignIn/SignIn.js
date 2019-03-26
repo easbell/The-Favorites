@@ -11,7 +11,7 @@ export class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-
+      status: ''
     }
   }
 
@@ -47,6 +47,7 @@ export class SignIn extends Component {
         addMessage('')
       }, 3000)
     }
+    this.setState({ status: response.status })
   }
   
   render() {

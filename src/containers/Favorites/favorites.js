@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Favorites extends Component{
+  constructor() {
+    super()
+    this.state = {
+      error: ''
+    }
+  }
   filterMovies = () => {
     let favoritesArray = [];
     this.props.favorites.forEach(favorite => {
@@ -17,13 +23,17 @@ class Favorites extends Component{
   }
 
   renderMovies = (movies) => {
-    return movies.map(movie => {
-      return (
-        <Movie  
-          {...movie}
-        />
-      )
-    })
+    if(movies.length === 0) {
+      return <h2>You currently have no favorites saved.</h2>
+    } else {
+      return movies.map(movie => {
+        return (
+          <Movie  
+            {...movie}
+          />
+        )
+      })
+    }
   }
 
   render() {
