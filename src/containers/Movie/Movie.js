@@ -54,7 +54,6 @@ export class Movie extends Component {
 
   addFavorite = async (e) => {
     const { id, title, rating, user_id, posterImage, synopsis, releaseDate } = this.props
-    console.log(title, id, user_id)
     const url = "http://localhost:3000/api/users/favorites/new"
     const movie = {
       movie_id: id, 
@@ -66,7 +65,7 @@ export class Movie extends Component {
       overview: synopsis
     }
     try {
-      const addedFavorite = await fetchData(url, {
+      await fetchData(url, {
         method: "POST", 
         body: JSON.stringify(movie),
         headers: {
