@@ -19,39 +19,14 @@
     height: 200px;
     width: 400px;
     position: fixed;
-    // top: 250px;
-    // margin-left: 100px;
-    // // overflow-y: auto;
     text-overflow: ellipsis;
     z-index: 1;
   }
   &:hover {
-    .movie-info {
-      // visibility: visible;
-      // position: fixed;
-      // padding: 10px;
-      // transform: none;
-      // right: auto;
-      // bottom: auto;
-      // top: auto;
-      // left: auto;
-      // margin: 0 auto;
-      // margin-top: -15px;
-      // margin-left: -22px;
-    }
-  &:after {
-    .movie-info {
+    img {
+      opacity: .7;
     }
   }
-  }
-  // &:after {
-  //     border-left: 20px solid transparent;
-  //     border-top: 20px solid #efefef;
-  //     bottom: -20px;
-  //     content: "";
-  //     position: absolute;
-  //     right: 20px;
-  // }
 }
 
 .fav-false {
