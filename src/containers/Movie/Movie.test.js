@@ -86,5 +86,47 @@ describe('Movie', () => {
       expect(mockFn).toHaveBeenCalled()
     })
   })
-})
 
+  describe('mapStateToProps', () => {
+    it('should show previous value for state favorites', () => {
+      const initialState = {
+        user: {id: 2},
+        favorites: [1, 2, 3]
+      }
+
+      expect(mapStateToProps(initialState).favorites).toEqual([1, 2, 3])
+    });
+
+    it.skip('should show previous value for state user id', () => {
+      const initialState = {
+        user: {id: 2},
+        favorites: [1, 2, 3]
+      }
+
+      expect(mapStateToProps(initialState).user.id).toEqual(2)
+    })
+  })
+
+  describe('mapDispatchToProps', () => {
+    it('should pass correct type when addFavoriteToStore is called', () => {
+      const dispatch = jest.fn()
+
+      mapDispatchToProps(dispatch).addFavoriteToState()
+      expect(dispatch.mock.calls[0][0]).toEqual({ type: 'ADD_FAVORITE' })
+    });
+
+    it('should pass correct type when deleteFavorite is called', () => {
+      const dispatch = jest.fn()
+
+      mapDispatchToProps(dispatch).deleteFavorite()
+      expect(dispatch.mock.calls[0][0]).toEqual({ type: 'DELETE_FAVORITE' })
+    })
+
+    it('should pass correct type when addMessage is called', () => {
+      const dispatch = jest.fn()
+
+      mapDispatchToProps(dispatch).addMessage()
+      expect(dispatch.mock.calls[0][0]).toEqual({ type: 'ADD_MESSAGE' })
+    })
+  })
+})
