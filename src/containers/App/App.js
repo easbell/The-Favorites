@@ -15,22 +15,16 @@ import SignOut from '../SignOut/SignOut';
 
 class App extends Component {
   componentDidMount = () => {
-    this.fetchMovies()
-    this.fetchTv();
-  }
-  
-  fetchMovies = async () => {
-    let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${1}`;
-    let allMovies = await fetchData(url);
-    let cleanData = cleanMovieData(allMovies);
-    this.props.addAllMovies(cleanData);
+    this.fetchMedia('tv')
+    this.fetchMedia('movies')
   }
 
-  fetchTv = async () => {
-    const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
-    const allShows = await fetchData(url);
-    const cleanData = cleanMovieData(allShows);
-    this.props.addAllShows(cleanData);
+  fetchMedia = async (type) => {
+    let url = `https://api.themoviedb.org/3/trending/${type}/day?api_key=${key}`;
+    let allData = await fetchData(url);
+    let cleanData = cleanMovieData(allData);
+    type === 'tv' ? this.props.addAllShows(cleanData)
+    : this.props.addAllMovies(cleanData)
   }
 
   render() {
