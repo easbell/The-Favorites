@@ -54,7 +54,7 @@ export class Movie extends Component {
   }
 
   addFavorite = async (e) => {
-    const { id, title, rating, user_id, posterImage, synopsis, releaseDate } = this.props
+    const { id, title, rating, user_id, posterImage, synopsis, releaseDate, addMessage } = this.props
     const url = "http://localhost:3000/api/users/favorites/new"
     const movie = {
       movie_id: id, 
@@ -75,7 +75,10 @@ export class Movie extends Component {
       })
       this.props.addFavoriteToState(id)
     } catch(error) {
-      console.log(error.message)
+      addMessage(error.message)
+      setTimeout(() => {
+        addMessage('')
+      }, 3000)
     }
   }
 

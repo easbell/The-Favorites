@@ -3,13 +3,14 @@ import Movie from '../Movie/Movie';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-class Favorites extends Component{
+export class Favorites extends Component{
   constructor() {
     super()
     this.state = {
       error: ''
     }
   }
+
   filterMovies = () => {
     let favoritesArray = [];
     this.props.favorites.forEach(favorite => {
@@ -19,10 +20,11 @@ class Favorites extends Component{
          }
       })
     })
-    return this.renderMovies(favoritesArray)
+    return favoritesArray
   }
 
-  renderMovies = (movies) => {
+  renderMovies = () => {
+    const movies = this.filterMovies()
     if(movies.length === 0) {
       return <h2>You currently have no favorites saved.</h2>
     } else {
@@ -39,7 +41,7 @@ class Favorites extends Component{
   render() {
     return (
       <div className="movie-container">
-        {this.filterMovies()}
+        {this.renderMovies()}
       </div>
     )
   }
