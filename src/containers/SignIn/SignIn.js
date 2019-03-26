@@ -76,9 +76,6 @@ export class SignIn extends Component {
           {status === 'success' &&
             <Redirect to='/' />
           }
-          {status === 500 &&
-            <p>Sorry, we couldn't find your account, please sign up.</p>
-          }
           <button>Sign In</button>
         </form>
       </div>

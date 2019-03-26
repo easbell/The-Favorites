@@ -14,30 +14,16 @@ import SignUp from '../SignUp/SignUp';
 import SignOut from '../SignOut/SignOut';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: '',
-    }
-  }
-
   componentDidMount = () => {
     this.fetchMovies()
     this.fetchTv();
   }
   
   fetchMovies = async () => {
-    let movies = [];
-    for(let i = 1; i <= 3; i++) {
-      let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${i}`;
-      let allMovies = await fetchData(url);
-      console.log(allMovies)
-      let cleanData = cleanMovieData(allMovies);
-      cleanData.forEach(movie => {
-        movies.push(movie)
-      })
-    }
-    this.props.addAllMovies(movies);
+    let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${1}`;
+    let allMovies = await fetchData(url);
+    let cleanData = cleanMovieData(allMovies);
+    this.props.addAllMovies(cleanData);
   }
 
   fetchTv = async () => {
