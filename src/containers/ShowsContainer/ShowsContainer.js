@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 class ShowsContainer extends Component{
   renderShows = () => {
@@ -28,3 +29,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(ShowsContainer)
+
+ShowsContainer.propTypes = {
+  shows: propTypes.array.isRequired
+}

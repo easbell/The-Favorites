@@ -12,6 +12,7 @@ import { NavLink, Route } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import SignOut from '../SignOut/SignOut';
+import propTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -113,3 +114,12 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  shows: propTypes.array.isRequired,
+  movies: propTypes.array.isRequired,
+  user: propTypes.string,
+  message: propTypes.string,
+  addAllMovies: propTypes.func.isRequired,
+  addAllShows: propTypes.func.isRequired
+}
