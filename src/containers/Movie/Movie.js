@@ -3,7 +3,6 @@ import { fetchData } from '../../utils/fetch';
 import { addFavorite, deleteFavorite, addMessage } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-       
 
 export class Movie extends Component {
   constructor() {
