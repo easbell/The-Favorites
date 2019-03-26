@@ -20,9 +20,8 @@ export class SignUp extends Component {
   
   handleAddUser = async (e) => {
     e.preventDefault();
-    console.log('in submit', this.state)
     const url = 'http://localhost:3000/api/users/new#'
-    const newUser = await fetchData(url, {
+    fetchData(url, {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -52,6 +51,7 @@ export class SignUp extends Component {
           />
           <input
             value={this.state.password}
+            type='password'
             name='password'
             placeholder="Password"
             onChange={this.handleChange}

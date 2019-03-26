@@ -16,7 +16,7 @@ export class SignOut extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   logOutUser: (user) => dispatch(logOutUser())
 })
 
