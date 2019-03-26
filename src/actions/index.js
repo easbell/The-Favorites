@@ -13,7 +13,7 @@ export const logOutUser = () => ({
 })
 
 export const addAllShows = (shows) => ({
-  type: 'ADD_ALL_TVS',
+  type: 'ADD_ALL_SHOWS',
   shows,
 })
 

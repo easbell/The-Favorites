@@ -1,5 +1,5 @@
 import React from 'react';
-import Favorites from './favorites'
+import { Favorites } from './favorites'
 import { shallow } from 'enzyme'
 import { mockDataResponse, mockFavorite } from '../../utils/mockData'
 
@@ -18,17 +18,33 @@ describe('favorites', () => {
     )
   })
 
-  it('should match snapshot', () => {
+  it('should match snapshot with favorites', () => {
     expect(wrapper).toMatchSnapshot()
   });
 
-  describe('filterMovies', () => {
-    it('should call renderMovies', () => {
-      wrapper.instance().renderMovies = jest.fn
-      // const mockFavorites = mockFavorite
-      wrapper.instance().filterMovies()
+  it('should match snapshot without favorites', () => {
+    props = {
+      favorites: [],
+      movies: mockDataResponse
+    }
 
-      expect(wrapper.instance().renderMovies).toHaveBeenCalled()
+    wrapper = shallow(
+      <Favorites {...props}/>
+    )
+
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  describe('renderMovies', () => {
+    it('should call filterMovies', () => {
+      wrapper = shallow(
+        <Favorites {...props}
+        />
+      )
+      wrapper.instance().filterMovies = jest.fn().mockImplementation(() =>(mockDataResponse))
+      
+      wrapper.instance().renderMovies()
+      expect(wrapper.instance().filterMovies).toHaveBeenCalled()
     })
   })
   
