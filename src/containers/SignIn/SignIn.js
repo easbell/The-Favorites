@@ -3,7 +3,7 @@ import { fetchData } from '../../utils/fetch';
 import { cleanUsers, fetchAllFavorites } from '../../utils/helpers';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logInUser, addAllFavorites } from '../../actions';
+import { logInUser, addAllFavorites, addMessage } from '../../actions';
 
 export class SignIn extends Component {
   constructor() {
@@ -21,6 +21,7 @@ export class SignIn extends Component {
   }
 
   handleSignIn = async (e) => {
+    const { addMessage } = this.props
     e.preventDefault();
     const url = 'http://localhost:3000/api/users'
     const userInput = this.state
@@ -36,6 +37,10 @@ export class SignIn extends Component {
       this.props.logInUser(response.data)
       const userFavorites = await fetchAllFavorites(response.data.id)
       this.props.addFavoritesToState(userFavorites)
+      addMessage('Welcome Back.')
+      setTimeout(() => {
+        addMessage('')
+      }, 3000)
     } 
     this.setState({ status: response.status })
   }
@@ -77,7 +82,8 @@ export class SignIn extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   logInUser: (user) => dispatch(logInUser(user)),
-  addFavoritesToState: (favorite) => dispatch(addAllFavorites(favorite))
+  addFavoritesToState: (favorite) => dispatch(addAllFavorites(favorite)),
+  addMessage: (message) => dispatch(addMessage(message))
 })
 
 export default connect(null, mapDispatchToProps)(SignIn)

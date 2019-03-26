@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie should match snapshot 1`] = `undefined`;
+exports[`Movie should match snapshot 1`] = `
+<div
+  className="movie"
+>
+  <div
+    className="movie-info"
+  />
+  <Link
+    to="/undefined/123"
+  >
+    <img
+      alt="movie poster"
+      src="https://image.tmdb.org/t/p/w500undefined"
+    />
+  </Link>
+  <div
+    className="fav-false"
+    onClick={[Function]}
+  />
+</div>
+`;

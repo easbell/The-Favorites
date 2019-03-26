@@ -34,25 +34,11 @@ export class Movie extends Component {
         this.setState({favorite: true})
       }
     } else {
-      console.log('log in')
       addMessage('Please log in to add to favorites.')
       setTimeout(() => {
         addMessage('')
       }, 3000)
     }
-  }
-
-  removeFavorite = async () => {
-    const { id, user_id } = this.props
-    const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`;
-    const userOptionObject = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }
-    await fetchData(url, userOptionObject);
-    this.props.deleteFavorite(id)
   }
 
   removeFavorite = async () => {
@@ -88,7 +74,7 @@ export class Movie extends Component {
           "Content-Type": "application/json"
         }
       })
-      console.log(addedFavorite)
+      // console.log(addedFavorite)
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)

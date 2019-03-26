@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './App.css';
 import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
@@ -50,19 +49,21 @@ class App extends Component {
   }
 
   render() {
-    const {message} = this.props
+    const {message, user, addMessage} = this.props
     return (
       <div className="App">
         <header>
-          <NavLink to='/login' className="nav">Log In</NavLink>
-          <NavLink to='/signup' className="nav">Sign Up</NavLink>
-          <NavLink to='/favorites' className="nav">Favorites</NavLink>
-          {/* <button onClick={this.fetchTv}>Show TV Shows</button> */}
+        { !user &&
+          <div>
+            <NavLink to='/login' className="nav">Log In</NavLink>
+            <NavLink to='/signup' className="nav">Sign Up</NavLink>
+          </div>
+        }
           {
-          this.props.user &&
+            user &&
             <div>
-              <p>Welcome back!</p>
               <SignOut />
+              <NavLink to='/favorites' className="nav">Favorites</NavLink>
             </div>
           }
           <h1>MOVIE TRACKER</h1>

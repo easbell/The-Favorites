@@ -7,24 +7,24 @@ describe('fetchData', () => {
   beforeEach(() => {
     mockData = mockMovieResponse;
 
-    fetch = jest.fn().mockImplementation(() => Promise.resolve({
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
       statue: 200,
       json: () => Promise.resolve(mockData)
     }))
   })
 
-  it.skip('takes in the expected URL', async () => {
-    const url = 'users.com'
+  it('takes in the expected URL', async () => {
+    const url = 'www.users.com'
     
-    await fetchData(url)
+    await fetchData(url, undefined)
 
-    expect(fetch).toBeCalledWith(url)
+    expect(window.fetch).toBeCalledWith(url, undefined)
   })
 
-  it.skip('return expected data', async () => {
-    const url = 'users.com'
-    const result = await fetchData(url)
+  it('return expected data', async () => {
+    const url = 'www.users.com'
+    const result = await fetchData(url, undefined)
     expect(result).toEqual(mockData)
   })
 })
