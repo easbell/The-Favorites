@@ -3,7 +3,7 @@ import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies, addAllShows, logOutUser } from '../../actions';
+import { addAllMovies, addAllShows, logOutUser, addMessage } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import ShowsContainer from '../ShowsContainer/ShowsContainer';
 import MovieDetails from '../../components/MovieDetails';
@@ -22,16 +22,30 @@ export class App extends Component {
   
   fetchMovies = async () => {
     let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${1}`;
-    let allMovies = await fetchData(url);
-    let cleanData = cleanMovieData(allMovies);
-    this.props.addAllMovies(cleanData);
+    try {
+      let allMovies = await fetchData(url);
+      let cleanData = cleanMovieData(allMovies);
+      this.props.addAllMovies(cleanData);
+    } catch(error) {
+      this.props.addMessage(error.message)
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
+    }
   }
 
   fetchTv = async () => {
     const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
-    const allShows = await fetchData(url);
-    const cleanData = cleanMovieData(allShows);
-    this.props.addAllShows(cleanData);
+    try {
+      const allShows = await fetchData(url);
+      const cleanData = cleanMovieData(allShows);
+      this.props.addAllShows(cleanData);
+    } catch(error) {
+      this.props.addMessage(error.message)
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
+    }
   }
 
   render() {
@@ -74,7 +88,8 @@ export class App extends Component {
 export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies)),
   addAllShows: (shows) => dispatch(addAllShows(shows)),
-  logOutUser: (user) => dispatch(logOutUser())
+  logOutUser: (user) => dispatch(logOutUser()),
+  addMessage: (message) => dispatch(addMessage())
 })
 
 export const mapStateToProps = (state) => ({

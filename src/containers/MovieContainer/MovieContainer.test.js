@@ -2,24 +2,25 @@ import React from 'react';
 import MovieContainer from './MovieContainer'
 import { mapStateToProps } from './MovieContainer'
 import { shallow } from 'enzyme'
-import { mockDataResponse } from '../../utils/mockData';
+import { mockDataResponse, mockMovieResponse, mockMovieContainer } from '../../utils/mockData';
 
 describe('MovieContainer', () => {
   it('should match snapshot', () => {
     const wrapper = shallow(
-      <MovieContainer movies={mockDataResponse} />
+      <MovieContainer />
     )
 
     expect(wrapper).toMatchSnapshot()
   });
   
   describe('mapStateToProps', () => {
-    it.skip('should show previous value for state favorites', () => {
-      const initialState = {
-        movies: [{}, {}, {}]
+    it('should return an object with movies', () => {
+      const movies = mockMovieContainer;
+      const mockState = {
+        movies
       }
 
-      expect(mapStateToProps(initialState).favorites).toEqual([{}, {}, {}])
+      expect(mapStateToProps(mockState).movies).toEqual(mockMovieContainer)
     });
   })
 })

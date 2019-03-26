@@ -21,7 +21,6 @@ export const fetchAllFavorites = async (id) => {
 }
 
 const cleanFavorites = (favorites) => {
-  console.log(favorites)
   return favorites.map(movie => {
     return movie.movie_id
   })
