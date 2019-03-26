@@ -23,7 +23,7 @@ class ShowsContainer extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   shows: state.shows
 })
 
