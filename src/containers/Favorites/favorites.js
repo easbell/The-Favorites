@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Favorites extends Component{
   constructor() {
@@ -38,8 +39,11 @@ class Favorites extends Component{
 
   render() {
     return (
-      <div className="movie-container">
-        {this.filterMovies()}
+      <div>
+        <Link to={`/`}><button className='back-btn-fave'>Back To Movies</button></Link>
+        <div className="favorites-container">
+          {this.filterMovies()}
+        </div>
       </div>
     )
   }
