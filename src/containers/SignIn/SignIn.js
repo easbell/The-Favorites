@@ -11,7 +11,7 @@ export class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-      status: '',
+
     }
   }
 
@@ -41,8 +41,12 @@ export class SignIn extends Component {
       setTimeout(() => {
         addMessage('')
       }, 3000)
-    } 
-    this.setState({ status: response.status })
+    } else {
+      addMessage('Sorry, we could not find that account.')
+      setTimeout(() => {
+        addMessage('')
+      }, 3000)
+    }
   }
   
   render() {
@@ -62,6 +66,7 @@ export class SignIn extends Component {
           <h4>password</h4>
           <input
             value={this.state.password}
+            type='password'
             name='password'
             placeholder="Password"
             onChange={this.handleChange}
