@@ -19,11 +19,9 @@ class Favorites extends Component{
   renderMovies = (movies) => {
     return movies.map(movie => {
       return (
-        <Link to={`/movies/${movie.id}`} key={movie.id} >
-          <Movie  
-            {...movie}
-          />
-        </Link>
+        <Movie  
+          {...movie}
+        />
       )
     })
   }
