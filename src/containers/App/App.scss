@@ -34,6 +34,13 @@ header {
   padding: 25px;
 }
 
+.hint-header {
+  font-size: 16px;
+  color: hsla(0,0%,100%, 0.85);
+  font-family: 'bebas';
+  letter-spacing: .3em;
+}
+
 h1 {
   color: hsla(0,0%,100%, 0.85);
   font-family: 'bebas';
@@ -44,9 +51,11 @@ h1 {
 .nav {
   color: hsla(0,0%,100%, 0.85);
   font-family: 'nav';
-  padding: 10px;
+  padding: 18px;
 }
 
 .message {
-  color: #fff;
+  color: hsla(60, 80%, 70%, 1);
+  font-family: 'nav';
+  font-size: 27px;
 }

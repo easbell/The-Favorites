@@ -49,6 +49,7 @@ export class App extends Component {
         <Route exact path="/" render={() => (
           <div>
             <h2 className="sub-header">Recommended Movies</h2>
+            <h3 className="hint-header">(scroll for more content)</h3>
             <MovieContainer />
             <h2 className="sub-header">Recommended TV Shows</h2>
             <ShowsContainer />

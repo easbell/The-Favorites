@@ -36,7 +36,8 @@
   position: absolute;
   top: 24px;
   left: -19px;
-  background: url('./utils/assets/false.png')
+  background: url('./utils/assets/false.png');
+  background-repeat: no-repeat;
 }
 
 .fav-true {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export class Favorites extends Component{
   constructor() {

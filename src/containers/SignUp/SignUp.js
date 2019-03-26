@@ -20,7 +20,7 @@ export class SignUp extends Component {
   
   handleAddUser = async (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3000/api/users/new#'
+    const url = 'http://localhost:3000/api/users/new'
     fetchData(url, {
       method: 'POST',
       body: JSON.stringify(this.state),
