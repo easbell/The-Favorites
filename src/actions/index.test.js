@@ -75,4 +75,30 @@ describe('actions', () => {
       expect(result).toEqual(expected);
     })
   })
+
+  describe('deleteFavorite', () => {
+    it('should return a type of DELETE_FAVORITES with all favorite movies/shows', () => {
+      const expected = {
+        type: 'DELETE_FAVORITE',
+        id: 4
+      }
+  
+      const result = actions.deleteFavorite(4);
+  
+      expect(result).toEqual(expected);
+    })
+  })
+
+  describe('addMessage', () => {
+    it('should return a type of ADD_MESSAGE with all favorite movies/shows', () => {
+      const expected = {
+        type: 'ADD_MESSAGE',
+        message: 'message'
+      }
+  
+      const result = actions.addMessage('message');
+  
+      expect(result).toEqual(expected);
+    })
+  })
 })
