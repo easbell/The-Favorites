@@ -119,5 +119,7 @@ App.propTypes = {
   shows: propTypes.array.isRequired,
   movies: propTypes.array.isRequired,
   user: propTypes.string,
-  message: propTypes.string
+  message: propTypes.string,
+  addAllMovies: propTypes.func.isRequired,
+  addAllShows: propTypes.func.isRequired
 }
