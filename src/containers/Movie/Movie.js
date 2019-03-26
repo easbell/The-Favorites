@@ -9,8 +9,7 @@ export class Movie extends Component {
   constructor() {
     super()
     this.state = {
-      favorite: false,
-      message: ''
+      favorite: false
     }
   }
 
@@ -67,14 +66,13 @@ export class Movie extends Component {
       overview: synopsis
     }
     try {
-      const addedFavorite = await fetchData(url, {
+      await fetchData(url, {
         method: "POST", 
         body: JSON.stringify(movie),
         headers: {
           "Content-Type": "application/json"
         }
       })
-      // console.log(addedFavorite)
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
@@ -83,18 +81,11 @@ export class Movie extends Component {
 
   render() {
     const {favorite} = this.state
-    const { id, title, rating, posterImage, synopsis, type } = this.props
+    const { id, posterImage } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div className="movie">
-        <div className="movie-info">
-        {title}
-        {rating}
-        {synopsis}
-        </div>
-        {/* <h4 className="movie-title">{title}</h4> */}
-        {/* <p classsName="rating">{rating}</p> */}
-        <Link to={`/${type}/${id}`}>
+        <Link to={`/details/${id}`}>
           <img src={image} alt='movie poster'/> 
         </Link>
         <div onClick={this.validateFavorite} className={favorite ? 'fav-true': 'fav-false'}></div>

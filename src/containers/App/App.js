@@ -3,42 +3,28 @@ import { fetchData } from '../../utils/fetch'
 import { key } from '../../utils/apiKEY';
 import { cleanMovieData } from '../../utils/helpers';
 import { connect } from 'react-redux';
-import { addAllMovies, addAllShows } from '../../actions';
+import { addAllMovies, addAllShows, logOutUser } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import ShowsContainer from '../ShowsContainer/ShowsContainer';
 import MovieDetails from '../../components/MovieDetails';
+import Nav from '../../components/Nav/Nav'
 import Favorites from '../Favorites/favorites';
-import { NavLink, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-import SignOut from '../SignOut/SignOut';
 import propTypes from 'prop-types';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: '',
-    }
-  }
-
   componentDidMount = () => {
     this.fetchMovies()
     this.fetchTv();
   }
   
   fetchMovies = async () => {
-    let movies = [];
-    for(let i = 1; i <= 3; i++) {
-      let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${i}`;
-      let allMovies = await fetchData(url);
-      console.log(allMovies)
-      let cleanData = cleanMovieData(allMovies);
-      cleanData.forEach(movie => {
-        movies.push(movie)
-      })
-    }
-    this.props.addAllMovies(movies);
+    let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${1}`;
+    let allMovies = await fetchData(url);
+    let cleanData = cleanMovieData(allMovies);
+    this.props.addAllMovies(cleanData);
   }
 
   fetchTv = async () => {
@@ -49,45 +35,30 @@ class App extends Component {
   }
 
   render() {
-    const {message, user } = this.props
+    const {message} = this.props
     return (
       <div className="App">
         <header>
-        { !user &&
-          <div>
-            <NavLink to='/login' className="nav">Log In</NavLink>
-            <NavLink to='/signup' className="nav">Sign Up</NavLink>
-          </div>
-        }
-          {
-            user &&
-            <div>
-              <SignOut />
-              <NavLink to='/favorites' className="nav">Favorites</NavLink>
-            </div>
-          }
+          <Nav />
           <h1>THE FAVORITE</h1>
+          <Route exact path='/login' component={SignIn} />
+          <Route exact path='/signup' component={SignUp} />
         </header>
         <p className='message'>{message}</p>
-        <Route exact path="/" render={() => <h2 className="sub-header">Recommended Movies</h2>}/>
-        <Route exact path='/' component={MovieContainer} />
-        <Route exact path="/" render={() => <h2 className="sub-header">Recommended TV Shows</h2>}/>
-        <Route exact path='/' component={ShowsContainer} />
-        <Route exact path='/login' component={SignIn} />
-        <Route exact path='/signup' component={SignUp} />
         <Route exact path='/favorites' component={Favorites} />
-        <Route path='/movies/:id' render={({ match }) => {
+        <Route exact path="/" render={() => (
+          <div>
+            <h2 className="sub-header">Recommended Movies</h2>
+            <MovieContainer />
+            <h2 className="sub-header">Recommended TV Shows</h2>
+            <ShowsContainer />
+          </div>
+        )} />
+        <Route path='/details/:id' render={({ match }) => {
           const { id } = match.params
-          const selectedMovie = this.props.movies.find(movie => {
-            return movie.id == id
-          })
-          if(selectedMovie) {
-            return <MovieDetails {...selectedMovie} />
-          }
-        }} />
-        <Route path='/shows/:id' render={({ match }) => {
-          const { id } = match.params
-          const selectedMovie = this.props.shows.find(movie => {
+          const { movies, shows } = this.props
+          const allMedia = movies.concat(shows)
+          const selectedMovie = allMedia.find(movie => {
             return movie.id == id
           })
           if(selectedMovie) {
@@ -99,10 +70,10 @@ class App extends Component {
   }
 }
 
-
 export const mapDispatchToProps = (dispatch) => ({
   addAllMovies: (movies) => dispatch(addAllMovies(movies)),
-  addAllShows: (shows) => dispatch(addAllShows(shows))
+  addAllShows: (shows) => dispatch(addAllShows(shows)),
+  logOutUser: (user) => dispatch(logOutUser())
 })
 
 const mapStateToProps = (state) => ({

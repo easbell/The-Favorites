@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/fetch';
-import { cleanUsers, fetchAllFavorites } from '../../utils/helpers';
-import { Link, Route, Redirect } from 'react-router-dom';
+import { fetchAllFavorites } from '../../utils/helpers';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logInUser, addAllFavorites, addMessage } from '../../actions';
 import propTypes from 'prop-types';
@@ -77,9 +77,6 @@ export class SignIn extends Component {
           </div>
           {status === 'success' &&
             <Redirect to='/' />
-          }
-          {status === 500 &&
-            <p>Sorry, we couldn't find your account, please sign up.</p>
           }
           <button className="sign-in-btn">Sign In</button>
         </form>
