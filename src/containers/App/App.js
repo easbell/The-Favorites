@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   render() {
-    const {message, user, addMessage} = this.props
+    const {message, user } = this.props
     return (
       <div className="App">
         <header>
