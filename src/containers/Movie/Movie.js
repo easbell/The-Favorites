@@ -8,8 +8,7 @@ export class Movie extends Component {
   constructor() {
     super()
     this.state = {
-      favorite: false,
-      message: ''
+      favorite: false
     }
   }
 
@@ -55,6 +54,7 @@ export class Movie extends Component {
 
   addFavorite = async (e) => {
     const { id, title, rating, user_id, posterImage, synopsis, releaseDate } = this.props
+    console.log(title, id, user_id)
     const url = "http://localhost:3000/api/users/favorites/new"
     const movie = {
       movie_id: id, 
@@ -73,7 +73,6 @@ export class Movie extends Component {
           "Content-Type": "application/json"
         }
       })
-      // console.log(addedFavorite)
       this.props.addFavoriteToState(id)
     } catch(error) {
       console.log(error.message)
@@ -82,18 +81,11 @@ export class Movie extends Component {
 
   render() {
     const {favorite} = this.state
-    const { id, title, rating, posterImage, synopsis, type } = this.props
+    const { id, posterImage } = this.props
     const image = 'https://image.tmdb.org/t/p/w500'+ posterImage
     return (
       <div className="movie">
-        <div className="movie-info">
-        {title}
-        {rating}
-        {synopsis}
-        </div>
-        {/* <h4 className="movie-title">{title}</h4> */}
-        {/* <p classsName="rating">{rating}</p> */}
-        <Link to={`/${type}/${id}`}>
+        <Link to={`/details/${id}`}>
           <img src={image} alt='movie poster'/> 
         </Link>
         <div onClick={this.validateFavorite} className={favorite ? 'fav-true': 'fav-false'}></div>

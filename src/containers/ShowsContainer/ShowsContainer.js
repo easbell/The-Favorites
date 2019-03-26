@@ -6,7 +6,7 @@ class ShowsContainer extends Component{
   renderShows = () => {
     return this.props.shows.map(show => {
       return (
-        <Movie type='shows' 
+        <Movie type='shows' key={show.id}
           {...show}
         />
       )
