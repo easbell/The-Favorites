@@ -50,31 +50,35 @@ export class SignIn extends Component {
     const { status } = this.state;
     return (
       <div className="login">
-        <Link to={'/'} className='back-btn'>Back To Home</Link>
         <form onSubmit={this.handleSignIn} className="form">
-          <h4>email:</h4>
-          <input
-            value={this.state.email}
-            name='email'
-            placeholder="Email"
-            onChange={this.handleChange}
-            className="input"
-          />
-          <h4>password</h4>
-          <input
-            value={this.state.password}
-            name='password'
-            placeholder="Password"
-            onChange={this.handleChange}
-            className="input"
-          />
+        <Link to={'/'} className='back-btn'>Back To Home</Link>
+          <div className="input-container">
+            {/* <h4 className="input-label">email:</h4> */}
+            <input
+              value={this.state.email}
+              name='email'
+              placeholder="Email"
+              onChange={this.handleChange}
+              className="input"
+            />
+          </div>
+          <div className="input-container">
+            {/* <h4 className="input-label">password:</h4> */}
+            <input
+              value={this.state.password}
+              name='password'
+              placeholder="Password"
+              onChange={this.handleChange}
+              className="input"
+            />
+          </div>
           {status === 'success' &&
             <Redirect to='/' />
           }
           {status === 500 &&
             <p>Sorry, we couldn't find your account, please sign up.</p>
           }
-          <button>Sign In</button>
+          <button class="sign-in-btn">Sign In</button>
         </form>
       </div>
     )
