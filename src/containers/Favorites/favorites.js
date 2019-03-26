@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 class Favorites extends Component{
   filterMovies = () => {
@@ -43,3 +44,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(Favorites)
+
+Favorites.propTypes = {
+  movies: propTypes.array.isRequired,
+  favorites: propTypes.array.isRequired
+}
