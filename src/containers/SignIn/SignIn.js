@@ -4,6 +4,7 @@ import { fetchAllFavorites } from '../../utils/helpers';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logInUser, addAllFavorites, addMessage } from '../../actions';
+import propTypes from 'prop-types';
 
 export class SignIn extends Component {
   constructor() {
@@ -54,29 +55,30 @@ export class SignIn extends Component {
     const { status } = this.state;
     return (
       <div className="login">
-        <Link to={'/'} className='back-btn'>Back To Home</Link>
         <form onSubmit={this.handleSignIn} className="form">
-          <h4>email:</h4>
-          <input
-            value={this.state.email}
-            name='email'
-            placeholder="Email"
-            onChange={this.handleChange}
-            className="input"
-          />
-          <h4>password</h4>
-          <input
-            value={this.state.password}
-            type='password'
-            name='password'
-            placeholder="Password"
-            onChange={this.handleChange}
-            className="input"
-          />
+        <Link to={'/'} className='back-btn'>Back To Home</Link>
+          <div className="input-container">
+            <input
+              value={this.state.email}
+              name='email'
+              placeholder="Email"
+              onChange={this.handleChange}
+              className="input"
+            />
+          </div>
+          <div className="input-container">
+            <input
+              value={this.state.password}
+              name='password'
+              placeholder="Password"
+              onChange={this.handleChange}
+              className="input"
+            />
+          </div>
           {status === 'success' &&
             <Redirect to='/' />
           }
-          <button>Sign In</button>
+          <button className="sign-in-btn">Sign In</button>
         </form>
       </div>
     )
@@ -90,3 +92,9 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(SignIn)
+
+SignIn.propTypes = {
+  logInUser: propTypes.func.isRequired,
+  addFavoritesToState: propTypes.func.isRequired,
+  addMessage: propTypes.func.isRequired
+}

@@ -12,8 +12,7 @@ import Favorites from '../Favorites/favorites';
 import { Route } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-
-
+import propTypes from 'prop-types';
 
 class App extends Component {
   componentDidMount = () => {
@@ -41,7 +40,7 @@ class App extends Component {
       <div className="App">
         <header>
           <Nav />
-          <h1>MOVIE TRACKER</h1>
+          <h1>THE FAVORITE</h1>
           <Route exact path='/login' component={SignIn} />
           <Route exact path='/signup' component={SignUp} />
         </header>
@@ -85,3 +84,12 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  shows: propTypes.array.isRequired,
+  movies: propTypes.array.isRequired,
+  user: propTypes.string,
+  message: propTypes.string,
+  addAllMovies: propTypes.func.isRequired,
+  addAllShows: propTypes.func.isRequired
+}
