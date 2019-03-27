@@ -40,7 +40,7 @@ export class App extends Component {
       <div className="App">
         <header>
           <Nav />
-          <h1>THE FAVORITE</h1>
+          <h1>THE FAVORITES</h1>
           <Route exact path='/login' component={SignIn} />
           <Route exact path='/signup' component={SignUp} />
         </header>
