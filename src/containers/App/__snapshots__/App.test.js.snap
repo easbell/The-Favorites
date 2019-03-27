@@ -7,7 +7,7 @@ exports[`App should match snapshot 1`] = `
   <header>
     <Connect(Nav) />
     <h1>
-      THE FAVORITE
+      THE FAVORITES
     </h1>
     <Route
       component={[Function]}
@@ -47,7 +47,7 @@ exports[`App should match snapshot when there is a selected movie 1`] = `
   <header>
     <Connect(Nav) />
     <h1>
-      THE FAVORITE
+      THE FAVORITES
     </h1>
     <Route
       component={[Function]}

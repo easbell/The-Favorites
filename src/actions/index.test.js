@@ -39,9 +39,9 @@ describe('actions', () => {
   })
 
   describe('addAllShows', () => {
-    it('should return a type of ADD_ALL_TVS with all the tv shows', () => {
+    it('should return a type of ADD_ALL_SHOWS with all the tv shows', () => {
       const expected = {
-        type: 'ADD_ALL_TVS',
+        type: 'ADD_ALL_SHOWS',
         shows: mockDataResponse
       }
       const result = actions.addAllShows(mockDataResponse);

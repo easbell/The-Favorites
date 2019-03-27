@@ -33,6 +33,7 @@ exports[`SignIn should match snapshot 1`] = `
         name="password"
         onChange={[Function]}
         placeholder="Password"
+        type="password"
         value=""
       />
     </div>

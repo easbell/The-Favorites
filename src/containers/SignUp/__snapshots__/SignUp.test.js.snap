@@ -1,46 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUp should match snapshot 1`] = `
-<div
-  className="logout"
->
-  <form
-    className="form"
-  >
-    <Link
-      className="back-btn"
-      to="/"
-    >
-      Back To Home
-    </Link>
-    <input
-      className="input"
-      name="name"
-      onChange={[Function]}
-      placeholder="Your Name"
-      value=""
-    />
-    <input
-      className="input"
-      name="email"
-      onChange={[Function]}
-      placeholder="Email"
-      value=""
-    />
-    <input
-      className="input"
-      name="password"
-      onChange={[Function]}
-      placeholder="Password"
-      type="password"
-      value=""
-    />
-    <button
-      className="sign-up-btn"
-      onClick={[Function]}
-    >
-      Sign Up
-    </button>
-  </form>
-</div>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;

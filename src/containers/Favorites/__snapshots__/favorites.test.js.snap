@@ -1,21 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`favorites should match snapshot with favorites 1`] = `
-<div
-  className="movie-container"
->
-  <h2>
-    You currently have no favorites saved.
-  </h2>
+<div>
+  <Link
+    className="back-btn-fave"
+    to="/"
+  >
+    Back To Home
+  </Link>
+  <div
+    className="movie-container"
+  >
+    <h2>
+      You currently have no favorites saved.
+    </h2>
+  </div>
 </div>
 `;
 
 exports[`favorites should match snapshot without favorites 1`] = `
-<div
-  className="movie-container"
->
-  <h2>
-    You currently have no favorites saved.
-  </h2>
+<div>
+  <Link
+    className="back-btn-fave"
+    to="/"
+  >
+    Back To Home
+  </Link>
+  <div
+    className="movie-container"
+  >
+    <h2>
+      You currently have no favorites saved.
+    </h2>
+  </div>
 </div>
 `;

@@ -18,7 +18,7 @@ exports[`MovieDetails should match snapshot 1`] = `
         <button
           className="back-btn-fave"
         >
-          Back To Movies
+          Back To All
         </button>
       </Link>
       <h2
@@ -53,7 +53,7 @@ exports[`MovieDetails should match snapshot when there is a selected movie 1`] =
         <button
           className="back-btn-fave"
         >
-          Back To Movies
+          Back To All
         </button>
       </Link>
       <h2
