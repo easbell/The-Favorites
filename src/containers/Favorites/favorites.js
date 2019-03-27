@@ -41,8 +41,11 @@ export class Favorites extends Component{
 
   render() {
     return (
-      <div className="movie-container">
-        {this.renderMovies()}
+      <div>
+        <Link to={'/'} className='back-btn-fave'>Back To Home</Link>
+        <div className="movie-container">
+          {this.renderMovies()}
+        </div>
       </div>
     )
   }
