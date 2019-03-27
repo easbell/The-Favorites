@@ -19,7 +19,7 @@ We created an app for a user looking to keep track of her favorite films and tv 
 ## Future Enhancements:
 - 100% testing
 - Arrows indicating left and right scrollability
-- Combining Movies and TV Shows fetch methods/DRY up code
+- Combining Movies and TV Shows fetch methods
 
 ## Primary Technologies Used:
 - React/Redux/Router
