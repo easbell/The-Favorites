@@ -107,5 +107,7 @@ App.propTypes = {
   user: propTypes.string,
   message: propTypes.string,
   addAllMovies: propTypes.func,
-  addAllShows: propTypes.func
+  addAllShows: propTypes.func,
+  logOutUser: propTypes.func,
+  addMessage: propTypes.func
 }
