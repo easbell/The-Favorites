@@ -1,7 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignIn should match snapshot 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div
+  className="login"
+>
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <Link
+      className="back-btn"
+      to="/"
+    >
+      Back To Home
+    </Link>
+    <div
+      className="input-container"
+    >
+      <input
+        className="input"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        value=""
+      />
+    </div>
+    <div
+      className="input-container"
+    >
+      <input
+        className="input"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        value=""
+      />
+    </div>
+    <button
+      className="sign-in-btn"
+    >
+      Sign In
+    </button>
+  </form>
+</div>
 `;
