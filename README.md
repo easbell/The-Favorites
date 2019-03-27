@@ -14,9 +14,12 @@
 ![The-Favorites-1](https://user-images.githubusercontent.com/20582868/55050436-46de7f00-5016-11e9-9841-824504c36cab.gif)
 
 ## Background and Information:
+We created an app for a user looking to keep track of her favorite films and tv shows. By creating an account and scrolling through the list of cutting edge content, the user can save and edit a catalog of her favorite films and series.
 
-
-## Future Enhancements: 
+## Future Enhancements:
+- 100% testing
+- Arrows indicating left and right scrollability
+- Combining Movies and TV Shows fetch methods/DRY up code
 
 ## Primary Technologies Used:
 - React/Redux/Router
