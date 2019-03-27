@@ -5,6 +5,10 @@ export const mockUser = {
   email: "tman2272@aol.com"
 }
 
+export const mockMessage = {
+  message: 'you must log in first'
+}
+
 export const mockMovieResponse = {
 page: 1,
 results: [
