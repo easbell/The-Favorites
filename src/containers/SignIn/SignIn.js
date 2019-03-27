@@ -69,6 +69,7 @@ export class SignIn extends Component {
           <div className="input-container">
             <input
               value={this.state.password}
+              type='password'
               name='password'
               placeholder="Password"
               onChange={this.handleChange}

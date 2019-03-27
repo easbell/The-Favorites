@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import MovieDetails from './MovieDetails'
-import { mockSelectedMovie } from '../utils/mockData'
+import { mockSelectedMovie } from '../../utils/mockData'
 
 describe('MovieDetails', () => {
   it('should match snapshot', () => {

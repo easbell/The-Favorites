@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/fetch';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addMessage } from '../../actions'
 
 export class SignUp extends Component {
   constructor() {
@@ -10,6 +11,7 @@ export class SignUp extends Component {
       name: '',
       email: '',
       password: '',
+      status: ''
     }
   }
 
@@ -21,16 +23,29 @@ export class SignUp extends Component {
   handleAddUser = async (e) => {
     e.preventDefault();
     const url = 'http://localhost:3000/api/users/new'
-    fetchData(url, {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    try {
+      fetchData(url, {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      this.setState({ status: 'success' })
+      this.props.addMessage('Success! Please sign in.')
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
+    } catch(error) {
+      this.props.addMessage('Sorry, something went wrong.')
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
+    }
   }
 
   render() {
+    const { status } = this.state
     return (
       <div className="logout">
         <form onSubmit={this.handleSignIn} className="form">
@@ -57,6 +72,9 @@ export class SignUp extends Component {
             onChange={this.handleChange}
             className="input"
           />
+          {status === 'success' &&
+            <Redirect to='/' />
+          }
           <button onClick={this.handleAddUser} className="sign-up-btn">Sign Up</button>
         </form>
       </div>
@@ -64,4 +82,8 @@ export class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export const mapDispatchToProps = (dispatch) => ({
+  addMessage: (message) => dispatch(addMessage(message))
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);

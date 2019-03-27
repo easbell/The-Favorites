@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-class ShowsContainer extends Component{
+export class ShowsContainer extends Component{
   renderShows = () => {
     return this.props.shows.map(show => {
       return (

@@ -13,7 +13,7 @@ class MovieDetails extends Component {
         <div className='movie-details'>
           <img src={image} alt='movie poster'/>
           <div className='movie-info'>
-            <Link to={`/`}><button className='back-btn-fave'>Back To Movies</button></Link>
+            <Link to={`/`}><button className='back-btn-fave'>Back To All</button></Link>
             <h2 className='sub-header'>{title}</h2>
             <h3>Rating: {rating}</h3>
             <h3>Release Date: {releaseDate}</h3>
