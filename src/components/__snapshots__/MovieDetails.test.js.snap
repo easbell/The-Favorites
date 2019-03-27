@@ -2,14 +2,6 @@
 
 exports[`MovieDetails should match snapshot 1`] = `
 <div>
-  <Link
-    className="back-btn"
-    to="/"
-  >
-    <button>
-      Back To Movies
-    </button>
-  </Link>
   <div
     className="movie-details"
   >
@@ -20,6 +12,15 @@ exports[`MovieDetails should match snapshot 1`] = `
     <div
       className="movie-info"
     >
+      <Link
+        to="/"
+      >
+        <button
+          className="back-btn-fave"
+        >
+          Back To Movies
+        </button>
+      </Link>
       <h2
         className="sub-header"
       />
@@ -36,14 +37,6 @@ exports[`MovieDetails should match snapshot 1`] = `
 
 exports[`MovieDetails should match snapshot when there is a selected movie 1`] = `
 <div>
-  <Link
-    className="back-btn"
-    to="/"
-  >
-    <button>
-      Back To Movies
-    </button>
-  </Link>
   <div
     className="movie-details"
   >
@@ -54,6 +47,15 @@ exports[`MovieDetails should match snapshot when there is a selected movie 1`] =
     <div
       className="movie-info"
     >
+      <Link
+        to="/"
+      >
+        <button
+          className="back-btn-fave"
+        >
+          Back To Movies
+        </button>
+      </Link>
       <h2
         className="sub-header"
       />

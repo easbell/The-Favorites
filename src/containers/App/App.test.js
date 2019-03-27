@@ -19,7 +19,6 @@ describe('App', () => {
            addAllMovies={mockFn}
       />)
 
-
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
       status: 200,
