@@ -95,7 +95,7 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(null, mapDispatchToProps)(SignIn)
 
 SignIn.propTypes = {
-  logInUser: propTypes.func.isRequired,
-  addFavoritesToState: propTypes.func.isRequired,
-  addMessage: propTypes.func.isRequired
+  logInUser: propTypes.func,
+  addFavoritesToState: propTypes.func,
+  addMessage: propTypes.func
 }
