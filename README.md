@@ -10,7 +10,7 @@
 - Run npm start and visit localhost:3000 in your browser
 
 ## Preview: 
-
+![The-Favorites-1](https://user-images.githubusercontent.com/20582868/55050436-46de7f00-5016-11e9-9841-824504c36cab.gif)
 
 ## Background and Information:
 
