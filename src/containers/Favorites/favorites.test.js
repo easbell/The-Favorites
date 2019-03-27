@@ -47,7 +47,4 @@ describe('favorites', () => {
       expect(wrapper.instance().filterMovies).toHaveBeenCalled()
     })
   })
-  
-
-
 })
