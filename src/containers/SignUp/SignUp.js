@@ -32,8 +32,15 @@ export class SignUp extends Component {
         }
       })
       this.setState({ status: 'success' })
+      this.props.addMessage('Success! Please sign in.')
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
     } catch(error) {
       this.props.addMessage('Sorry, something went wrong.')
+      setTimeout(() => {
+        this.props.addMessage('')
+      }, 3000)
     }
   }
 
