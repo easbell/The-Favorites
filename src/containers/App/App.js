@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addAllMovies, addAllShows, logOutUser, addMessage } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import ShowsContainer from '../ShowsContainer/ShowsContainer';
-import MovieDetails from '../../components/MovieDetails';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import Nav from '../../components/Nav/Nav'
 import Favorites from '../Favorites/favorites';
 import { Route } from 'react-router-dom';
