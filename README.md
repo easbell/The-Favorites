@@ -7,8 +7,8 @@
 ## Install/Set-Up:
 - Clone this repo
 - Run npm install from the root directory
-- Run npm start and visit localhost:3001 in your browser
 - Run npm start in the api directory and visit localhost:3000 to view user data
+- Run npm start and visit localhost:3001 in your browser
 
 ## Preview: 
 ![The-Favorites-2](https://user-images.githubusercontent.com/20582868/55050465-7b523b00-5016-11e9-925b-36d2c7c63b6e.gif)
