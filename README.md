@@ -5,9 +5,15 @@
 - [Edgar Eloy Munoz](https://github.com/criteriamor)
 
 ## Install/Set-Up:
-- Clone this repo
+
+# Back-End:
+- Clone down the following repo and run npm install: https://github.com/turingschool-examples/movie-tracker
+- Follow the instructions in the README to setup postgresSQl.
+- Run npm start - visit localhost:3000/api/users - you should see a json response with a single user.
+
+# Front-end:
+- Clone down this repo
 - Run npm install from the root directory
-- Run npm start in the api directory and visit localhost:3000 to view user data
 - Run npm start and visit localhost:3001 in your browser
 
 ## Preview: 
