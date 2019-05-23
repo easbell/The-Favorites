@@ -36,7 +36,3 @@ We created an app for a user looking to keep track of her favorite films and tv 
 ## Testing:
 Jest and Enzyme for front-end testing.
 Run npm test from the root directory
-
-
-## Wireframe:
-![Screen Shot 2019-03-27 at 7 50 09 AM](https://user-images.githubusercontent.com/34728115/55081211-0a863f80-5065-11e9-8ea4-e5794c04fa15.png)
